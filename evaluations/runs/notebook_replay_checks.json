@@ -1,0 +1,37 @@
+{
+  "edition": "English notebook v1",
+  "checks": [
+    {
+      "case": "01",
+      "notebook": "runs/nb-01/analysis.ipynb",
+      "schema_valid": true,
+      "fresh_kernel": true,
+      "fresh_directory": true,
+      "code_cells_executed": 4,
+      "original_inputs_unchanged": true,
+      "stored_and_rerun_output_evidence_equal": true,
+      "exported_tables_byte_identical": {
+        "marker_results.tsv": true
+      },
+      "bounded_fixture_value_checks": "pass",
+      "differing_code_cell_indices": []
+    },
+    {
+      "case": "03",
+      "notebook": "runs/nb-03/treated_control_batch_analysis.ipynb",
+      "schema_valid": true,
+      "fresh_kernel": true,
+      "fresh_directory": true,
+      "code_cells_executed": 3,
+      "original_inputs_unchanged": true,
+      "stored_and_rerun_output_evidence_equal": true,
+      "exported_tables_byte_identical": {
+        "descriptive_group_differences.tsv": true
+      },
+      "bounded_fixture_value_checks": "pass",
+      "differing_code_cell_indices": []
+    }
+  ],
+  "comparison": "All stream and display data, including embedded images; directory paths normalized, output counters and metadata excluded.",
+  "scope": "Schema and synthetic execution checks only; behavioral timing, scientific interpretation, and visual review require separate inspection."
+}

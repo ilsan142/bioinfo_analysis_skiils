@@ -2,7 +2,7 @@
 
 Date: 2026-10-17. The four distributed skill documents were translated into English while preserving their scientific decision rules, conditional reference loading, and user-language behavior. English and Korean READMEs describe the motivation, installation, and limits. Historical inputs and execution records retain their original wording.
 
-The exact current skill files are identified by [skill-en-v1.sha256.json](runs/skill-en-v1.sha256.json). Earlier Korean-edition results are documented in [REPORT.md](REPORT.md); those results must not be treated as a rerun of the English edition.
+The skill files tested in this edition are identified by [skill-en-v1.sha256.json](runs/skill-en-v1.sha256.json). The subsequent notebook-workflow update has a separate [validation record](NOTEBOOK_WORKFLOW.md). Earlier Korean-edition results are documented in [REPORT.md](REPORT.md); those results must not be treated as a rerun of the English edition.
 
 ## Scope
 

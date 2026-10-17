@@ -1,6 +1,6 @@
 # 검증 기록 — 2026-10-17
 
-> **Current edition:** The distributable skill is now in English. Its validation is recorded separately in [ENGLISH_EDITION.md](ENGLISH_EDITION.md). The Korean record below describes the earlier Korean v1/v2 editions; it is not evidence that every scenario was rerun after translation.
+> **Current edition:** The distributable skill is now in English. Translation checks are recorded in [ENGLISH_EDITION.md](ENGLISH_EDITION.md), and the subsequent notebook-workflow update in [NOTEBOOK_WORKFLOW.md](NOTEBOOK_WORKFLOW.md). The Korean record below describes the earlier Korean v1/v2 editions; it is not evidence that every scenario was rerun after these updates.
 
 실제 연구 자료는 사용하지 않았다. **6종의 작은 사례에서 에이전트 행동을 실행해 관찰했고, 4종은 시나리오 검토만 했다.** 정상 사례는 지침 수정 후 새 에이전트로 다시 실행했다. 표본 관계 정정 사례는 초기 분석 뒤 정정 입력을 전달하는 두 차례 작업이었다. 이는 스킬의 제한된 행동 검증이지 생물학적 검증이 아니다.
 

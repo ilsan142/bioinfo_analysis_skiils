@@ -1,0 +1,3 @@
+feature_id	n_control_donors	n_treated_donors	control_batch	treated_batch	control_mean	treated_mean	control_sample_sd	treated_sample_sd	control_min	control_max	treated_min	treated_max	observed_treated_B_minus_control_A	units	batch_adjusted_treatment_effect
+marker_A	3	3	A	B	5	7	0.2	0.2	4.8	5.2	6.8	7.2	2	normalized_log2_intensity	not_identifiable
+marker_B	3	3	A	B	8	8.5	0.2	0.2	7.8	8.2	8.3	8.7	0.5	normalized_log2_intensity	not_identifiable

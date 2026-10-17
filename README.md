@@ -16,6 +16,8 @@ This skill is designed to make the agent a research assistant whose work the res
 
 The aim is to keep the researcher involved in scientific judgment while letting the assistant carry out routine, agreed work without repeated approval requests.
 
+Exploratory notebooks fit this aim: code, output, and the researcher's interpretation can sit together, letting another reader follow why the analysis took its next step. The skill therefore prefers an executed `.ipynb` for exploration. The notebook grows as results are inspected, so it records how observations informed decisions, including choices added after seeing the data.
+
 ## How the skill works
 
 For each meaningful question, the assistant:
@@ -31,6 +33,14 @@ The skill covers principles shared by RNA-seq, single-cell, spatial, genomic var
 
 The distributed instructions are in English. The assistant follows the user's language, with Korean as the fallback when no preference is apparent. It does not start an unsolicited research analysis when the request is only for planning, review, or skill creation.
 
+## Analysis in a notebook
+
+Each scientific question forms a connected sequence: **question and rationale → code and actual output → observations, interpretation, and limitations → next decision**. The assistant writes the interpretation after inspecting the output and before implementing analysis that depends on it. Important decisions stay in the notebook so the researcher does not need the chat history to understand the work.
+
+Before calling the notebook reproducible, the assistant reruns it in order from a fresh kernel, checks the new outputs, and saves them with the current code. Corrections to sample relationships require recalculation and updates to affected outputs and explanations. Missing inputs, failed execution, and unverified steps remain explicit.
+
+This is a default for exploration, with room for the researcher's workflow. Existing literate documents, explicitly requested scripts, established pipelines, code reviews, or unavailable notebook runtimes can call for another format. Long or reusable calculations can live in scripts while their important parameters, results, and rationale remain visible in the notebook. A sufficient notebook is also the analysis record; duplicate narrative logs and separate exports of every intermediate result are unnecessary.
+
 ## Files
 
 | File | Purpose |
@@ -38,9 +48,10 @@ The distributed instructions are in English. The assistant follows the user's la
 | [SKILL.md](skills/bioinformatics-research-assistant/SKILL.md) | Core workflow, scientific decisions, researcher questions, reporting, and completion criteria |
 | [scientific-review.md](skills/bioinformatics-research-assistant/references/scientific-review.md) | Conditional scientific and statistical checks, data-type considerations, and checked sources |
 | [collaboration-examples.md](skills/bioinformatics-research-assistant/references/collaboration-examples.md) | Examples of explanations, necessary questions, corrections, and limits |
-| [analysis-record.md](skills/bioinformatics-research-assistant/references/analysis-record.md) | Lightweight records, rerun information, and final-report guidance |
+| [analysis-record.md](skills/bioinformatics-research-assistant/references/analysis-record.md) | Notebook workflow, saved outputs and clean reruns, lightweight records, and final reports |
 | [Evaluation inputs](evaluations/cases.json) and [rubric](evaluations/rubric.md) | Ten small scenarios; inputs and scoring criteria are kept separate |
 | [Evaluation report](evaluations/REPORT.md) | Executed checks, evidence, revisions, and untested areas |
+| [Notebook validation](evaluations/NOTEBOOK_WORKFLOW.md) | Fresh-agent notebook checks, executed examples, and clean-kernel replay evidence |
 
 Install only `skills/bioinformatics-research-assistant/`. References are read when needed. Evaluation inputs, scoring criteria, and historical records are outside the distributable skill. The skill has no mandatory analysis scripts, package installation, or product-specific hooks.
 
@@ -103,11 +114,13 @@ Supply the biological question and available data or records. The assistant shou
 
 ## Validation and limits
 
+The current notebook update was tested with two fresh agents given only the skill and synthetic tasks, without expected answers or a request to use notebooks. Both produced executed notebooks and recorded observations before implementing dependent analysis. The normal case also generated and visually inspected a plot; the confounded case correctly withheld an identifiable treatment-effect claim. Independent clean-kernel reruns reproduced their stored outputs and exported tables. See the [validation record](evaluations/NOTEBOOK_WORKFLOW.md), [normal-case notebook](evaluations/runs/nb-01/analysis.ipynb), and [confounding notebook](evaluations/runs/nb-03/treated_control_batch_analysis.ipynb).
+
 The original Korean edition was exercised in six scenarios: well-described data, fractional expression values, complete condition/batch confounding, prediction leakage, corrected sample relationships, and an unrelated web request. The normal case was rerun after a refinement to consolidate small outputs. Seven clean-process reruns checked the resulting analysis code. Four other scenarios were reviewed but not executed.
 
 The English edition separately passed package checks and fresh-agent regression checks for well-described data and complete condition/batch confounding. Both generated analyses were rerun in fresh processes with identical result tables. The other eight cases have not been rerun after translation; see the [English-edition validation record](evaluations/ENGLISH_EDITION.md). Historical inputs, skill snapshots, and execution records retain their original language and wording so that the evidence is not rewritten retrospectively. They are not alternative installable skills.
 
-Real research data, analysis-figure review, full client integration, and broad reliability across models remain unvalidated. Synthetic execution is not biological validation.
+Real research data, full client integration, and broad reliability across models remain unvalidated. Notebook-format exceptions and corrections to an existing notebook have not received fresh behavioral tests. One synthetic figure was reviewed; that is not broad visualization validation. Synthetic execution is not biological validation.
 
 To check the current package from the repository root, use Python 3 with PyYAML installed:
 

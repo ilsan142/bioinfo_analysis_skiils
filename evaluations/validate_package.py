@@ -29,7 +29,7 @@ def main():
     print("PASS: distributed skill documents contain no untranslated Korean text")
 
     documents = skill_documents + [root / "README.md", root / "README.ko.md", root / "evaluations" / "rubric.md"]
-    for report_name in ("REPORT.md", "ENGLISH_EDITION.md"):
+    for report_name in ("REPORT.md", "ENGLISH_EDITION.md", "NOTEBOOK_WORKFLOW.md"):
         report = root / "evaluations" / report_name
         if report.exists():
             documents.append(report)

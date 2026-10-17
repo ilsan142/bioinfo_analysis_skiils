@@ -1,0 +1,4 @@
+marker	n_control_donors	n_treated_donors	control_mean	treated_mean	adjusted_difference_log2	ci95_low_log2	ci95_high_log2	normalized_intensity_ratio	p_value	batch_B_minus_A_log2	residual_df	residual_sd	bh_q_value_3_markers	difference_batch_A	difference_batch_B	B_minus_A_difference	loo_min_log2	loo_max_log2
+marker_A	4	4	7.025	8.05	1.025	0.8702304785	1.179769521	2.034959384	1.279476289e-05	0.225	5	0.08514693183	3.838428867e-05	1.05	1	-0.05	0.98	1.06
+marker_B	4	4	5.025	5.125	0.1	-0.08176758476	0.2817675848	1.071773463	0.2164372293	0.25	5	0.1	0.2164372293	0.1	0.1	0	0.06	0.14
+marker_C	4	4	9.025	8.925	-0.1	-0.2817675848	0.08176758476	0.9330329915	0.2164372293	0.25	5	0.1	0.2164372293	-0.1	-0.1	1.776356839e-15	-0.14	-0.06

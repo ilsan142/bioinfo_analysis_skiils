@@ -1,6 +1,31 @@
 # Lightweight analysis records and completion checks
 
-Read this when choosing a record format or assembling final results. Reuse an existing notebook or analysis document if it contains what is needed. The templates below are optional; neither separate files nor every field are mandatory.
+Read the notebook sections when creating or updating an exploratory notebook; read other sections when choosing another record format or assembling final results. Reuse an existing notebook or analysis document if it contains what is needed. The templates below are optional; neither separate files nor every field are mandatory.
+
+## A notebook the researcher can follow
+
+Prefer one `.ipynb` for a coherent exploratory analysis unless the user's format, project workflow, task, or available runtime calls for another form. The notebook should be understandable without the chat transcript. Put the question, input locations and meaning, known design and unresolved assumptions, and minimal execution instructions near the start. Do not create empty sections for a whole planned pipeline before the data justify it.
+
+Build each question as a small connected group of cells:
+
+1. **Before execution, Markdown:** What will this check answer, why does it matter, and which verified facts or assumptions does it use? State consequential comparison or preprocessing choices here.
+2. **Code and actual outputs:** Run the minimum necessary computation. Display informative counts, tables, warnings, or figures rather than hiding all evidence in external files. Keep important inputs and parameters easy to find. A question can need several cells; do not impose a fixed cell count.
+3. **After inspection, Markdown:** Record the observed values, interpretation, limitations, and the next question with its reason. Add this before implementing work whose choices depend on the result. Note when a choice was added after seeing the data. The chat update can be shorter, but must agree with the saved notebook.
+
+For example, an identifier check can be followed by the actual matched, missing, and duplicate counts and a decision about whether sample-level comparisons can proceed. Do not fill these numbers or assume a successful match before executing the check. A short table can be sufficient; a notebook does not require a figure for every question.
+
+Use direct, readable analysis code. Move long or reusable calculations to scripts when useful, while keeping their invocation, consequential parameters, output summaries, and scientific rationale visible in the notebook. Avoid a notebook that merely launches an opaque pipeline. Display the actual generated figure and inspect it with available viewing tools; successful execution or image embedding alone does not establish visual review. Do not duplicate every inline table or plot into a separate artifact unless it needs export or reuse.
+
+## Execution, saved outputs, and a clean rerun
+
+- Execute during exploration and inspect each relevant result before writing dependent analysis. As the analysis settles, organize cells into a runnable order while preserving the distinction between prespecified choices and later exploration. A final linear notebook need not reproduce every failed attempt, but must retain consequential changes and their reasons.
+- Use the correct language kernel and document working directory, input paths, required packages and versions, and relevant random seeds. Run through the notebook execution environment; do not fabricate execution counts or paste shell results into code-cell outputs to make unexecuted cells look executed. If the work ran as scripts, describe it as script execution.
+- After consequential edits, invalidate and recompute affected downstream outputs and update their interpretation. Avoid showing old outputs under changed code. Preserve original inputs; mark any retained prior report or notebook as superseded rather than presenting two versions as current.
+- Once the requested analysis is assembled, restart with a fresh kernel and execute its analysis cells in order using the documented inputs and environment. Inspect the rerun results and save the resulting notebook. This checks reliance on hidden variables, execution order, and correspondence between current code and saved evidence; it does not establish scientific validity. Do not repeat full reruns after every exploratory cell.
+- Stop and address execution errors or clearly label a partial run. Keep useful completed work, identify the failing step and affected downstream results, and do not label a run successful merely because error-tolerant execution reached the last cell. For expensive stages using existing artifacts, record their origin and parameters and state exactly which computations were rerun; loading an old result is not recomputing it.
+- Treat notebook-schema validation, kernel execution, inspection of numerical results, and visual review as distinct checks. If the runtime, dependencies, inputs, or resources prevent a clean rerun, record what actually ran and what remains unverified. Do not install a large analysis environment just to satisfy the preferred format.
+
+The [Jupyter notebook format documentation](https://nbformat.readthedocs.io/en/latest/format_description.html) describes Markdown, code, and stored outputs. The [NBClient execution documentation](https://nbclient.readthedocs.io/en/latest/client.html) gives one optional way to execute and save notebooks and describes error handling. These are implementation references, not required libraries; use the project's available notebook tools. Both were checked on 2026-10-17.
 
 ## Record one question
 
@@ -27,6 +52,8 @@ Next question and reason / information needed from the researcher:
 ## Corrections and superseded results
 
 Identify the correction's source, old assumption and new relationship, and affected code, tables, figures, and explanations. Preserve originals and distinguish corrected metadata and current outputs. Rerun the necessary calculations and mark prior results as superseded. Even if the estimated effect is unchanged, check n, uncertainty, tests, figures, and interpretation again.
+
+For a notebook, this includes saved cell outputs and Markdown statements that quote or interpret them. A correction to replicate relationships can change the independent n, model, intervals, and plot grouping even if the same measured values remain. Finish with an in-order clean-kernel rerun of the corrected analysis when feasible and report its status.
 
 ## What the final report should retain
 
