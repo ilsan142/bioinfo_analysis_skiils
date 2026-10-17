@@ -1,0 +1,4 @@
+feature_id	n_control_donors	n_treated_donors	control_mean	treated_mean	difference_log2	ci95_low	ci95_high	batch_B_minus_A	residual_df	residual_sd	p_value	q_BH_3_markers	difference_within_batch_A	difference_within_batch_B	batch_difference_of_differences	leave_one_out_min	leave_one_out_max	max_abs_internal_studentized_residual	max_cooks_distance
+marker_A	4	4	7.025	8.05	1.025	0.8702304785	1.179769521	0.225	5	0.08514693183	1.279476289e-05	3.838428867e-05	1.05	1	-0.05	0.98	1.06	1.671258044	0.5586206897
+marker_B	4	4	5.025	5.125	0.1	-0.08176758476	0.2817675848	0.25	5	0.1	0.2164372293	0.2164372293	0.1	0.1	0	0.06	0.14	1.264911064	0.32
+marker_C	4	4	9.025	8.925	-0.1	-0.2817675848	0.08176758476	0.25	5	0.1	0.2164372293	0.2164372293	-0.1	-0.1	1.776356839e-15	-0.14	-0.06	1.264911064	0.32

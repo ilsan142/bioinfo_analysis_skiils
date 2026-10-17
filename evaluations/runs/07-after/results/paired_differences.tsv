@@ -1,0 +1,13 @@
+feature_id	donor_id	control_sample_id	treated_sample_id	batch	control_log2	treated_log2	treated_minus_control_log2
+marker_A	P1	S01	S05	A	7.0	8.0	1.0
+marker_A	P2	S02	S06	B	7.2	8.1	0.9
+marker_A	P3	S03	S07	A	6.8	7.9	1.1
+marker_A	P4	S04	S08	B	7.1	8.2	1.1
+marker_B	P1	S01	S05	A	5.0	5.1	0.1
+marker_B	P2	S02	S06	B	5.2	5.3	0.1
+marker_B	P3	S03	S07	A	4.8	4.9	0.1
+marker_B	P4	S04	S08	B	5.1	5.2	0.1
+marker_C	P1	S01	S05	A	9.0	8.9	-0.1
+marker_C	P2	S02	S06	B	9.2	9.1	-0.1
+marker_C	P3	S03	S07	A	8.8	8.7	-0.1
+marker_C	P4	S04	S08	B	9.1	9.0	-0.1

@@ -1,0 +1,4 @@
+feature_id	control_n	treated_n	control_mean	treated_mean	raw_difference	batch_adjusted_difference	ci95_low	ci95_high	batch_B_minus_A	residual_sd	within_batch_A_difference	within_batch_B_difference	leave_one_donor_out_min	leave_one_donor_out_max
+marker_A	4	4	7.025	8.05	1.025	1.025	0.870230479	1.17976952	0.225	0.0851469318	1.05	1	0.98	1.06
+marker_B	4	4	5.025	5.125	0.1	0.1	-0.0817675848	0.281767585	0.25	0.1	0.1	0.1	0.06	0.14
+marker_C	4	4	9.025	8.925	-0.1	-0.1	-0.281767585	0.0817675848	0.25	0.1	-0.1	-0.1	-0.14	-0.06

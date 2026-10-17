@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve the bytes of historical evidence, including TSV line endings.
+evaluations/runs/** -text

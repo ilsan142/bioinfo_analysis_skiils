@@ -1,0 +1,5 @@
+row_id	patient_id	split
+R1	P1	train
+R2	P1	test
+R3	P2	train
+R4	P2	test

@@ -1,0 +1,25 @@
+{
+  "samples": 8,
+  "independent_donors": 8,
+  "features": 3,
+  "missing": 0,
+  "zeros": 0,
+  "unmatched_ids": [],
+  "measurement_order_matches_metadata": false,
+  "join": "sample_id",
+  "excluded_samples": [],
+  "excluded_features": [],
+  "condition_batch": {
+    "control/A": 2,
+    "control/B": 2,
+    "treated/A": 2,
+    "treated/B": 2
+  },
+  "input_scale": "background-corrected, normalized log2 intensity; no transform",
+  "python": "3.12.7",
+  "sha256": {
+    "context.md": "0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace",
+    "metadata.tsv": "8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e",
+    "measurements.tsv": "01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93"
+  }
+}

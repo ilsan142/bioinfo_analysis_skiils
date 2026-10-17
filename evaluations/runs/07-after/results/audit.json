@@ -1,0 +1,54 @@
+{
+  "input_sha256": {
+    "TASK.md": "89b680a8d061fac7b5580689c1f4537e0db075a32828833091beea6f14d68ad4",
+    "context.md": "0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace",
+    "metadata.tsv": "8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e",
+    "metadata_corrected.tsv": "9a81af3b83e57cc66007c774a475b7d38d25d0773507630f164fece98732f094",
+    "design_correction.txt": "f434f59790e4ef04515ec469bff6c416a1d2f76524ea5aca05fc7eccbbea79cc",
+    "measurements.tsv": "01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93"
+  },
+  "environment": {
+    "python": "3.12.7",
+    "numpy": "2.1.3",
+    "scipy": "1.16.0",
+    "statsmodels": "0.14.5"
+  },
+  "shape_features_samples": [
+    3,
+    8
+  ],
+  "sample_id_sets_match": true,
+  "metadata_order_matches_measurement_order": false,
+  "link_method": "exact sample_id; metadata reordered to measurement columns",
+  "measurement_sample_order": [
+    "S05",
+    "S01",
+    "S07",
+    "S03",
+    "S08",
+    "S02",
+    "S06",
+    "S04"
+  ],
+  "unique_donors": 4,
+  "independent_unit": "paired donor, based on user correction in design_correction.txt",
+  "correction_preserves_sample_condition_batch": true,
+  "samples_per_donor": {
+    "P1": 2,
+    "P2": 2,
+    "P3": 2,
+    "P4": 2
+  },
+  "condition_batch_counts": {
+    "control/A": 2,
+    "control/B": 2,
+    "treated/A": 2,
+    "treated/B": 2
+  },
+  "missing_values": 0,
+  "zero_values": 0,
+  "minimum": 4.8,
+  "maximum": 9.2,
+  "excluded_samples": [],
+  "excluded_features": []
+}

@@ -1,0 +1,64 @@
+{
+  "audit_type": "Executed manifest audit and static source inspection; no model training or scoring",
+  "timestamp_utc": "2026-10-17T07:38:54.980386+00:00",
+  "python_version": "3.12.7",
+  "command": "python3 audit.py",
+  "inputs_sha256": {
+    "TASK.md": "f22d8c8a54e9ac30f4168b26175bf12a7f9b585ad761dd1c38c3a2341088a407",
+    "context.md": "05698b27d7b1314e96ec33eab1587b67f68fbbfb3cd0c2444ffbd5a93065b2d1",
+    "pipeline.py": "912d9d1de9b4cf06853c98a07a35a4ae0c2f03d8be8b1ab101caa0c941b5612d",
+    "split.tsv": "7c613dec379cd44e963e54569b639a220816fc30f45cf1876785870642c8f892"
+  },
+  "manifest": {
+    "rows": 4,
+    "unique_patients": 2,
+    "duplicate_row_ids": [],
+    "rows_per_split": {
+      "train": 2,
+      "test": 2
+    },
+    "patients_per_split": {
+      "train": 2,
+      "test": 2
+    },
+    "overlapping_patient_ids": [
+      "P1",
+      "P2"
+    ],
+    "overlapping_patient_count": 2,
+    "unseen_test_patient_ids": [],
+    "test_rows_with_patient_seen_in_train": 2,
+    "patient_row_membership": {
+      "P1": {
+        "train": [
+          "R1"
+        ],
+        "test": [
+          "R2"
+        ]
+      },
+      "P2": {
+        "train": [
+          "R3"
+        ],
+        "test": [
+          "R4"
+        ]
+      }
+    }
+  },
+  "source": {
+    "feature_selection_line": 8,
+    "feature_selection_expression": "SelectKBest(f_classif, k=10).fit_transform(X, y)",
+    "split_line": 9,
+    "split_expression": "train_test_split(selected, y, random_state=7)",
+    "selection_precedes_split": true,
+    "patient_id_read_in_function_body": false,
+    "manifest_referenced_in_source": false
+  },
+  "limitations": [
+    "No X or y provided; cannot execute evaluate, verify class balance, or estimate performance/bias/uncertainty.",
+    "Manifest overlap is observed; its correspondence to an actual random split execution is unverified.",
+    "Audit execution is not independent biological or predictive validation."
+  ]
+}

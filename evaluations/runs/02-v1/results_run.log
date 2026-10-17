@@ -1,0 +1,85 @@
+Command: python3 analyze.py
+Code SHA256: af5f7299cd37f1cf3962642ad885fbf2773834e060d94380526cc370828a3ad0
+{
+  "python": "3.12.7",
+  "input_sha256": {
+    "TASK.md": "69ae00c88ff54ab2f7a9333654e1083b2437cc1f62c50151e4fb9b0c9e1eab2b",
+    "context.md": "2909cd813feafc4f3f074add2e666cf62bcd136199d12d9fc3ae96a36564574c",
+    "expression.tsv": "0bee79335f5a666b2b1f6dfe969b00f267958500f12aa654b61bf3108d77204e",
+    "metadata.tsv": "38d9ba555d7a1c8dc547a869ad8db8b3cb791d19d64c027fd142223fb6a14c72"
+  },
+  "n_features": 3,
+  "n_sample_columns": 4,
+  "sample_ids": [
+    "C1",
+    "C2",
+    "T1",
+    "T2"
+  ],
+  "metadata_ids": [
+    "C1",
+    "C2",
+    "T1",
+    "T2"
+  ],
+  "sample_id_join": "exact set match; metadata joined by sample_id",
+  "duplicate_feature_ids": 0,
+  "duplicate_sample_ids": 0,
+  "n_missing_or_nonfinite": 0,
+  "n_values": 12,
+  "n_negative": 0,
+  "n_zero": 1,
+  "n_noninteger": 10,
+  "min": 0.0,
+  "max": 22.8,
+  "sample_columns_per_condition": {
+    "control": 2,
+    "treated": 2
+  },
+  "sample_summary": [
+    {
+      "sample_id": "C1",
+      "condition": "control",
+      "min": 0.0,
+      "median": 7.1,
+      "max": 10.5,
+      "zero_values": 1
+    },
+    {
+      "sample_id": "C2",
+      "condition": "control",
+      "min": 0.3,
+      "median": 8.0,
+      "max": 11.2,
+      "zero_values": 0
+    },
+    {
+      "sample_id": "T1",
+      "condition": "treated",
+      "min": 1.7,
+      "median": 6.8,
+      "max": 22.8,
+      "zero_values": 0
+    },
+    {
+      "sample_id": "T2",
+      "condition": "treated",
+      "min": 1.2,
+      "median": 7.2,
+      "max": 21.4,
+      "zero_values": 0
+    }
+  ],
+  "measurement_units": "unknown",
+  "independent_biological_units": "unknown",
+  "normalization_or_transform": "not applied",
+  "n_features_excluded": 0,
+  "n_samples_excluded": 0
+}
+Descriptive comparison (unknown input units):
+feature_id	control_n_columns	treated_n_columns	control_mean	control_min	control_max	treated_mean	treated_min	treated_max	treated_minus_control_mean
+gene_A	2	2	10.85	10.5	11.2	22.1	21.4	22.8	11.25
+gene_B	2	2	0.15	0	0.3	1.45	1.2	1.7	1.3
+gene_C	2	2	7.55	7.1	8	7	6.8	7.2	-0.55
+No filtering, imputation, rounding of inputs, normalization, or transformation.
+No hypothesis tests, p-values, FDR, confidence intervals, or fold changes calculated.

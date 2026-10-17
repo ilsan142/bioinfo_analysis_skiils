@@ -1,0 +1,220 @@
+Command: python analyze.py qc
+Versions: {'python': '3.12.7', 'numpy': '2.1.3', 'pandas': '2.3.1', 'scipy': '1.16.0', 'statsmodels': '0.14.5'}
+SHA256 TASK.md bb281f46a06d8bc01b4a4d86fefa71da2651e6b59bb7f3df3491e67eebbec0af
+SHA256 context.md 0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace
+SHA256 metadata.tsv 8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e
+SHA256 measurements.tsv 01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93
+QUESTION 1: sample linkage, independent units, design, distributions
+Input measurement column order: S05, S01, S07, S03, S08, S02, S06, S04
+ID-aligned order: S01, S02, S03, S04, S05, S06, S07, S08
+Samples=8; independent donors=8; markers=3
+Missing measurements=0; duplicate sample/donor/feature IDs=0; unmatched IDs=0
+Condition x batch (independent donors):
+batch      A  B
+condition      
+control    2  2
+treated    2  2
+Additive model rank=3/3
+Per-sample distributions across three different markers (descriptive only):
+           min  median  max donor_id condition batch
+sample_id                                           
+S01        5.0     7.0  9.0      D01   control     A
+S02        5.2     7.2  9.2      D02   control     B
+S03        4.8     6.8  8.8      D03   control     A
+S04        5.1     7.1  9.1      D04   control     B
+S05        5.1     8.0  8.9      D05   treated     A
+S06        5.3     8.1  9.1      D06   treated     B
+S07        4.9     7.9  8.7      D07   treated     A
+S08        5.2     8.2  9.0      D08   treated     B
+Marker-by-condition distributions on supplied log2 intensity scale:
+                      count   mean       std  min  median  max
+feature_id condition                                          
+marker_A   control        4  7.025  0.170783  6.8    7.05  7.2
+           treated        4  8.050  0.129099  7.9    8.05  8.2
+marker_B   control        4  5.025  0.170783  4.8    5.05  5.2
+           treated        4  5.125  0.170783  4.9    5.15  5.3
+marker_C   control        4  9.025  0.170783  8.8    9.05  9.2
+           treated        4  8.925  0.170783  8.7    8.95  9.1
+No normalization, transformation, imputation, aggregation, filtering, or exclusions applied.
+Command: python analyze.py fit
+Versions: {'python': '3.12.7', 'numpy': '2.1.3', 'pandas': '2.3.1', 'scipy': '1.16.0', 'statsmodels': '0.14.5'}
+SHA256 TASK.md bb281f46a06d8bc01b4a4d86fefa71da2651e6b59bb7f3df3491e67eebbec0af
+SHA256 context.md 0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace
+SHA256 metadata.tsv 8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e
+SHA256 measurements.tsv 01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93
+QUESTION 1: sample linkage, independent units, design, distributions
+Input measurement column order: S05, S01, S07, S03, S08, S02, S06, S04
+ID-aligned order: S01, S02, S03, S04, S05, S06, S07, S08
+Samples=8; independent donors=8; markers=3
+Missing measurements=0; duplicate sample/donor/feature IDs=0; unmatched IDs=0
+Condition x batch (independent donors):
+batch      A  B
+condition      
+control    2  2
+treated    2  2
+Additive model rank=3/3
+Per-sample distributions across three different markers (descriptive only):
+           min  median  max donor_id condition batch
+sample_id                                           
+S01        5.0     7.0  9.0      D01   control     A
+S02        5.2     7.2  9.2      D02   control     B
+S03        4.8     6.8  8.8      D03   control     A
+S04        5.1     7.1  9.1      D04   control     B
+S05        5.1     8.0  8.9      D05   treated     A
+S06        5.3     8.1  9.1      D06   treated     B
+S07        4.9     7.9  8.7      D07   treated     A
+S08        5.2     8.2  9.0      D08   treated     B
+Marker-by-condition distributions on supplied log2 intensity scale:
+                      count   mean       std  min  median  max
+feature_id condition                                          
+marker_A   control        4  7.025  0.170783  6.8    7.05  7.2
+           treated        4  8.050  0.129099  7.9    8.05  8.2
+marker_B   control        4  5.025  0.170783  4.8    5.05  5.2
+           treated        4  5.125  0.170783  4.9    5.15  5.3
+marker_C   control        4  9.025  0.170783  8.8    9.05  9.2
+           treated        4  8.925  0.170783  8.7    8.95  9.1
+No normalization, transformation, imputation, aggregation, filtering, or exclusions applied.
+QUESTION 2: treated minus control, adjusted for batch
+OLS: log2_intensity ~ intercept + treated + batch_B; control and batch A are references.
+Classical 95% t intervals; independent, homoskedastic approximately normal errors assumed.
+BH testing family: all 3 supplied markers, one two-sided treated-control contrast each.
+            n_control_donors  n_treated_donors  control_mean  treated_mean  difference_log2   ci95_low  ci95_high  batch_B_minus_A  residual_df  residual_sd     p_value  q_BH_3_markers
+feature_id                                                                                                                                                                              
+marker_A                   4                 4         7.025          8.05            1.025    0.87023    1.17977            0.225            5    0.0851469 1.27948e-05     3.83843e-05
+marker_B                   4                 4         5.025         5.125              0.1 -0.0817676   0.281768             0.25            5          0.1    0.216437        0.216437
+marker_C                   4                 4         9.025         8.925             -0.1  -0.281768  0.0817676             0.25            5          0.1    0.216437        0.216437
+Command: python analyze.py all
+Versions: {'python': '3.12.7', 'numpy': '2.1.3', 'pandas': '2.3.1', 'scipy': '1.16.0', 'statsmodels': '0.14.5'}
+SHA256 TASK.md bb281f46a06d8bc01b4a4d86fefa71da2651e6b59bb7f3df3491e67eebbec0af
+SHA256 context.md 0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace
+SHA256 metadata.tsv 8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e
+SHA256 measurements.tsv 01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93
+QUESTION 1: sample linkage, independent units, design, distributions
+Input measurement column order: S05, S01, S07, S03, S08, S02, S06, S04
+ID-aligned order: S01, S02, S03, S04, S05, S06, S07, S08
+Samples=8; independent donors=8; markers=3
+Missing measurements=0; duplicate sample/donor/feature IDs=0; unmatched IDs=0
+Condition x batch (independent donors):
+batch      A  B
+condition      
+control    2  2
+treated    2  2
+Additive model rank=3/3
+Per-sample distributions across three different markers (descriptive only):
+           min  median  max donor_id condition batch
+sample_id                                           
+S01        5.0     7.0  9.0      D01   control     A
+S02        5.2     7.2  9.2      D02   control     B
+S03        4.8     6.8  8.8      D03   control     A
+S04        5.1     7.1  9.1      D04   control     B
+S05        5.1     8.0  8.9      D05   treated     A
+S06        5.3     8.1  9.1      D06   treated     B
+S07        4.9     7.9  8.7      D07   treated     A
+S08        5.2     8.2  9.0      D08   treated     B
+Marker-by-condition distributions on supplied log2 intensity scale:
+                      count   mean       std  min  median  max
+feature_id condition                                          
+marker_A   control        4  7.025  0.170783  6.8    7.05  7.2
+           treated        4  8.050  0.129099  7.9    8.05  8.2
+marker_B   control        4  5.025  0.170783  4.8    5.05  5.2
+           treated        4  5.125  0.170783  4.9    5.15  5.3
+marker_C   control        4  9.025  0.170783  8.8    9.05  9.2
+           treated        4  8.925  0.170783  8.7    8.95  9.1
+No normalization, transformation, imputation, aggregation, filtering, or exclusions applied.
+QUESTION 2: treated minus control, adjusted for batch
+OLS: log2_intensity ~ intercept + treated + batch_B; control and batch A are references.
+Classical 95% t intervals; independent, homoskedastic approximately normal errors assumed.
+BH testing family: all 3 supplied markers, one two-sided treated-control contrast each.
+            n_control_donors  n_treated_donors  control_mean  treated_mean  difference_log2   ci95_low  ci95_high  batch_B_minus_A  residual_df  residual_sd     p_value  q_BH_3_markers
+feature_id                                                                                                                                                                              
+marker_A                   4                 4         7.025          8.05            1.025    0.87023    1.17977            0.225            5    0.0851469 1.27948e-05     3.83843e-05
+marker_B                   4                 4         5.025         5.125              0.1 -0.0817676   0.281768             0.25            5          0.1    0.216437        0.216437
+marker_C                   4                 4         9.025         8.925             -0.1  -0.281768  0.0817676             0.25            5          0.1    0.216437        0.216437
+QUESTION 3 (post hoc): batch consistency, residuals, and single-donor dependence
+Leave-one-donor-out fits assess influence only; no donor is excluded from the primary results.
+marker_A within-batch differences: {'A': np.float64(1.0499999999999998), 'B': np.float64(0.9999999999999982)}
+  Residuals: {'S01': 0.0875, 'S02': 0.0625, 'S03': -0.1125, 'S04': -0.0375, 'S05': 0.0625, 'S06': -0.0625, 'S07': -0.0375, 'S08': 0.0375}
+  Effect after omitting each donor: {'S01': np.float64(1.06), 'S02': np.float64(1.05), 'S03': np.float64(0.98), 'S04': np.float64(1.01), 'S05': np.float64(1.0), 'S06': np.float64(1.05), 'S07': np.float64(1.04), 'S08': np.float64(1.01)}
+marker_B within-batch differences: {'A': np.float64(0.09999999999999964), 'B': np.float64(0.09999999999999964)}
+  Residuals: {'S01': 0.1, 'S02': 0.05, 'S03': -0.1, 'S04': -0.05, 'S05': 0.1, 'S06': 0.05, 'S07': -0.1, 'S08': -0.05}
+  Effect after omitting each donor: {'S01': np.float64(0.14), 'S02': np.float64(0.12), 'S03': np.float64(0.06), 'S04': np.float64(0.08), 'S05': np.float64(0.06), 'S06': np.float64(0.08), 'S07': np.float64(0.14), 'S08': np.float64(0.12)}
+marker_C within-batch differences: {'A': np.float64(-0.09999999999999964), 'B': np.float64(-0.09999999999999787)}
+  Residuals: {'S01': 0.1, 'S02': 0.05, 'S03': -0.1, 'S04': -0.05, 'S05': 0.1, 'S06': 0.05, 'S07': -0.1, 'S08': -0.05}
+  Effect after omitting each donor: {'S01': np.float64(-0.06), 'S02': np.float64(-0.08), 'S03': np.float64(-0.14), 'S04': np.float64(-0.12), 'S05': np.float64(-0.14), 'S06': np.float64(-0.12), 'S07': np.float64(-0.06), 'S08': np.float64(-0.08)}
+            difference_within_batch_A  difference_within_batch_B  batch_difference_of_differences  leave_one_out_min  leave_one_out_max  max_abs_internal_studentized_residual  max_cooks_distance
+feature_id                                                                                                                                                                                        
+marker_A                         1.05                          1                            -0.05               0.98               1.06                                1.67126            0.558621
+marker_B                          0.1                        0.1                                0               0.06               0.14                                1.26491                0.32
+marker_C                         -0.1                       -0.1                      1.77636e-15              -0.14              -0.06                                1.26491                0.32
+No normality/interaction significance test: 8 donors provide weak assumption diagnostics.
+No randomization/permutation claim: treatment randomization/exchangeability is undocumented.
+Intervals and p values remain model-based exploratory summaries of synthetic data.
+
+FINAL CLEAN PROCESS RERUN
+Command: python analyze.py all
+Versions: {'python': '3.12.7', 'numpy': '2.1.3', 'pandas': '2.3.1', 'scipy': '1.16.0', 'statsmodels': '0.14.5'}
+SHA256 TASK.md bb281f46a06d8bc01b4a4d86fefa71da2651e6b59bb7f3df3491e67eebbec0af
+SHA256 context.md 0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace
+SHA256 metadata.tsv 8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e
+SHA256 measurements.tsv 01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93
+QUESTION 1: sample linkage, independent units, design, distributions
+Input measurement column order: S05, S01, S07, S03, S08, S02, S06, S04
+ID-aligned order: S01, S02, S03, S04, S05, S06, S07, S08
+Samples=8; independent donors=8; markers=3
+Missing measurements=0; duplicate sample/donor/feature IDs=0; unmatched IDs=0
+Condition x batch (independent donors):
+batch      A  B
+condition      
+control    2  2
+treated    2  2
+Additive model rank=3/3
+Per-sample distributions across three different markers (descriptive only):
+           min  median  max donor_id condition batch
+sample_id                                           
+S01        5.0     7.0  9.0      D01   control     A
+S02        5.2     7.2  9.2      D02   control     B
+S03        4.8     6.8  8.8      D03   control     A
+S04        5.1     7.1  9.1      D04   control     B
+S05        5.1     8.0  8.9      D05   treated     A
+S06        5.3     8.1  9.1      D06   treated     B
+S07        4.9     7.9  8.7      D07   treated     A
+S08        5.2     8.2  9.0      D08   treated     B
+Marker-by-condition distributions on supplied log2 intensity scale:
+                      count   mean       std  min  median  max
+feature_id condition                                          
+marker_A   control        4  7.025  0.170783  6.8    7.05  7.2
+           treated        4  8.050  0.129099  7.9    8.05  8.2
+marker_B   control        4  5.025  0.170783  4.8    5.05  5.2
+           treated        4  5.125  0.170783  4.9    5.15  5.3
+marker_C   control        4  9.025  0.170783  8.8    9.05  9.2
+           treated        4  8.925  0.170783  8.7    8.95  9.1
+No normalization, transformation, imputation, aggregation, filtering, or exclusions applied.
+QUESTION 2: treated minus control, adjusted for batch
+OLS: log2_intensity ~ intercept + treated + batch_B; control and batch A are references.
+Classical 95% t intervals; independent, homoskedastic approximately normal errors assumed.
+BH testing family: all 3 supplied markers, one two-sided treated-control contrast each.
+            n_control_donors  n_treated_donors  control_mean  treated_mean  difference_log2   ci95_low  ci95_high  batch_B_minus_A  residual_df  residual_sd     p_value  q_BH_3_markers
+feature_id                                                                                                                                                                              
+marker_A                   4                 4         7.025          8.05            1.025    0.87023    1.17977            0.225            5    0.0851469 1.27948e-05     3.83843e-05
+marker_B                   4                 4         5.025         5.125              0.1 -0.0817676   0.281768             0.25            5          0.1    0.216437        0.216437
+marker_C                   4                 4         9.025         8.925             -0.1  -0.281768  0.0817676             0.25            5          0.1    0.216437        0.216437
+QUESTION 3 (post hoc): batch consistency, residuals, and single-donor dependence
+Leave-one-donor-out fits assess influence only; no donor is excluded from the primary results.
+marker_A within-batch differences: {'A': 1.05, 'B': 1.0}
+  Residuals: {'S01': 0.0875, 'S02': 0.0625, 'S03': -0.1125, 'S04': -0.0375, 'S05': 0.0625, 'S06': -0.0625, 'S07': -0.0375, 'S08': 0.0375}
+  Effect after omitting each donor: {'S01': 1.06, 'S02': 1.05, 'S03': 0.98, 'S04': 1.01, 'S05': 1.0, 'S06': 1.05, 'S07': 1.04, 'S08': 1.01}
+marker_B within-batch differences: {'A': 0.1, 'B': 0.1}
+  Residuals: {'S01': 0.1, 'S02': 0.05, 'S03': -0.1, 'S04': -0.05, 'S05': 0.1, 'S06': 0.05, 'S07': -0.1, 'S08': -0.05}
+  Effect after omitting each donor: {'S01': 0.14, 'S02': 0.12, 'S03': 0.06, 'S04': 0.08, 'S05': 0.06, 'S06': 0.08, 'S07': 0.14, 'S08': 0.12}
+marker_C within-batch differences: {'A': -0.1, 'B': -0.1}
+  Residuals: {'S01': 0.1, 'S02': 0.05, 'S03': -0.1, 'S04': -0.05, 'S05': 0.1, 'S06': 0.05, 'S07': -0.1, 'S08': -0.05}
+  Effect after omitting each donor: {'S01': -0.06, 'S02': -0.08, 'S03': -0.14, 'S04': -0.12, 'S05': -0.14, 'S06': -0.12, 'S07': -0.06, 'S08': -0.08}
+            difference_within_batch_A  difference_within_batch_B  batch_difference_of_differences  leave_one_out_min  leave_one_out_max  max_abs_internal_studentized_residual  max_cooks_distance
+feature_id                                                                                                                                                                                        
+marker_A                         1.05                          1                            -0.05               0.98               1.06                                1.67126            0.558621
+marker_B                          0.1                        0.1                                0               0.06               0.14                                1.26491                0.32
+marker_C                         -0.1                       -0.1                      1.77636e-15              -0.14              -0.06                                1.26491                0.32
+No normality/interaction significance test: 8 donors provide weak assumption diagnostics.
+No randomization/permutation claim: treatment randomization/exchangeability is undocumented.
+Intervals and p values remain model-based exploratory summaries of synthetic data.
+Reproduction check: results.tsv byte-identical; no stderr; exit code 0.

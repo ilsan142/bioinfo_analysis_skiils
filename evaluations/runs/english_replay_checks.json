@@ -1,0 +1,25 @@
+{
+  "edition": "English en-v1",
+  "replays": [
+    {
+      "case": "01",
+      "command": "python3 analyze.py all",
+      "exit_code": 0,
+      "fresh_process": true,
+      "compared_output": "results.tsv",
+      "output_byte_identical": true,
+      "original_inputs_unchanged": true
+    },
+    {
+      "case": "03",
+      "command": "python3 analyze.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "compared_output": "descriptive_results.tsv",
+      "output_byte_identical": true,
+      "original_inputs_unchanged": true
+    }
+  ],
+  "bounded_expected_value_checks": "pass",
+  "scope": "Synthetic regression checks only; not biological validation or a full rerun of all scenarios."
+}

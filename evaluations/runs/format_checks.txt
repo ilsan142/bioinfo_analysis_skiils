@@ -1,0 +1,15 @@
+Date: 2026-10-17
+Working directory: /mnt/d/Bioinformatics_skill
+
+$ python3 /home/ilsan/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/bioinformatics-research-assistant
+Skill is valid!
+Exit code: 0
+
+$ python3 evaluations/validate_package.py
+PASS: name, description, directory and shared metadata
+PASS: 7 documents, 39 local links, fences and whitespace
+PASS: 10 distinct task inputs; case 07 has a staged correction
+NOT TESTED HERE: agent behavior, statistical validity, product discovery
+Exit code: 0
+
+These are format/packaging checks, not behavioral or biological validation.

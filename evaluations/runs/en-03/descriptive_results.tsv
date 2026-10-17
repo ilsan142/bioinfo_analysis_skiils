@@ -1,0 +1,3 @@
+feature_id	control_n_donors	control_mean_log2_intensity	control_sd_log2_intensity	control_min_log2_intensity	control_max_log2_intensity	treated_n_donors	treated_mean_log2_intensity	treated_sd_log2_intensity	treated_min_log2_intensity	treated_max_log2_intensity	observed_treatedB_minus_controlA_log2_intensity	batch_adjusted_treatment_effect_status
+marker_A	3	5.000000	0.200000	4.800000	5.200000	3	7.000000	0.200000	6.800000	7.200000	2.000000	not_identifiable
+marker_B	3	8.000000	0.200000	7.800000	8.200000	3	8.500000	0.200000	8.300000	8.700000	0.500000	not_identifiable

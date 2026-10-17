@@ -1,0 +1,94 @@
+{
+  "replays": [
+    {
+      "case": "01-v1",
+      "command": "python3 analysis.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "result_file_count": 6
+    },
+    {
+      "case": "02-v1",
+      "command": "python3 analyze.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "result_file_count": 2
+    },
+    {
+      "case": "03-v1",
+      "command": "python3 analyze.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "result_file_count": 3
+    },
+    {
+      "case": "01-v2",
+      "command": "python3 analysis.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "compared_files": [
+        "results.tsv"
+      ],
+      "comparison_note": "byte-identical"
+    },
+    {
+      "case": "06-v1",
+      "command": "python3 audit.py",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "compared_files": [
+        "audit_results.json"
+      ],
+      "comparison_note": "timestamp_utc excluded"
+    },
+    {
+      "case": "07-before",
+      "command": "python3 analyze.py all",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "compared_files": [
+        "results/contrasts.tsv"
+      ],
+      "comparison_note": "byte-identical"
+    },
+    {
+      "case": "07-after",
+      "command": "python3 analyze.py all",
+      "exit_code": 0,
+      "fresh_process": true,
+      "result_files_identical": true,
+      "compared_files": [
+        "results/contrasts.tsv",
+        "results/paired_differences.tsv"
+      ],
+      "comparison_note": "byte-identical"
+    }
+  ],
+  "independent_expected_value_checks": {
+    "normal_effects": [
+      1.025,
+      0.1,
+      -0.1
+    ],
+    "confounded_rank": [
+      2,
+      3
+    ],
+    "decimal_noninteger_values": 10,
+    "paired_n": 4,
+    "paired_df": 3,
+    "paired_marker_A_ci95": [
+      0.872651981917092,
+      1.1773480180829077
+    ],
+    "overlapping_patients": 2
+  },
+  "scope": "Code replay and bounded expected-value checks; not biological validation.",
+  "raw_input_preservation": "pass for all archived completed runs"
+}

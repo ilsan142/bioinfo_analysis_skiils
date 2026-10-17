@@ -1,0 +1,9 @@
+measurement_column	sample_id	donor_id	condition	batch
+1	S05	D05	treated	A
+2	S01	D01	control	A
+3	S07	D07	treated	A
+4	S03	D03	control	A
+5	S08	D08	treated	B
+6	S02	D02	control	B
+7	S06	D06	treated	B
+8	S04	D04	control	B

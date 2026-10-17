@@ -1,0 +1,11 @@
+출처: 2026-10-17 사용자의 실험 기록 정정 메시지.
+"실험 기록을 정정할게. S01/S05는 donor P1의 control/treated, S02/S06는 P2,
+S03/S07은 P3, S04/S08은 P4야. 같은 donor에서 나눈 배양 표본의 paired 비교이고,
+나머지 측정값·배치·시점은 그대로야. 이 정보를 반영해 분석 결과를 갱신해줘."
+
+이 정정은 원본 metadata.tsv의 donor_id D01-D08 및 기존 독립 집단 해석을 대체한다.
+metadata_corrected.tsv에 수정 donor_id를 저장했다. condition과 batch는 원본과 같다.
+measurements.tsv와 원본 metadata.tsv/context.md는 수정하지 않았다.
+현재 분석에서 독립 단위는 P1-P4의 4명이며 각 donor에 control/treated 표본 1개씩 있다.
+현재 분석은 metadata_corrected.tsv와 이 정정 기록을 입력으로 사용한다.
+기존 독립 표본 결과는 superseded_independent/SUPERSEDED.txt에 대체됨으로 표시했다.

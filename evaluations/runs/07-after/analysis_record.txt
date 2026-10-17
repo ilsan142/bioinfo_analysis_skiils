@@ -1,0 +1,83 @@
+분석일: 2026-10-17
+상태: 실험 기록 정정을 반영한 현재 paired 분석. 이전 독립 집단 분석은 대체됨.
+질문: 같은 donor에서 나눈 control/treated 배양 표본의 log2 intensity 차이와 불확실성.
+
+정정의 출처와 영향
+- 사용자 정정 원문은 design_correction.txt에 보존했다.
+- 현재 mapping: P1=S01/S05, P2=S02/S06, P3=S03/S07, P4=S04/S08 (control/treated).
+  독립 단위는 4 donor pairs이며, 관측은 8개다. 두 조건의 4명을 합쳐 독립 n=8로 세지 않는다.
+- metadata_corrected.tsv에 donor_id만 정정했다. sample_id, condition, batch는 원본과
+  동일함을 코드로 확인했다. measurements.tsv, metadata.tsv, context.md 원본은 보존했다.
+- 기존 코드·입력 사본·표·실행 로그·보고는 superseded_independent/에 보존했고
+  SUPERSEDED.txt로 대체됨을 표시했다. 그 디렉터리의 결과는 현재 추론에 사용하지 않는다.
+- 현재 코드의 기본 입력은 metadata_corrected.tsv이며, 다시 실행해도 기존 설계로 돌아가지 않는다.
+- 적용 스킬: bioinformatics-research-assistant/SKILL.md 및 앞서 읽은 관련 검토/기록 참고 문서.
+
+질문 1: 정정된 연결과 paired 구조
+- 실제 실행: python analyze.py audit > audit_run.log
+- 3 markers × 8 표본. ID 중복·미연결·결측은 없고 각 donor는 control 1개/treated 1개다.
+  측정 열 순서가 메타데이터와 다르므로 sample_id로 연결했다.
+- P1/P3는 batch A, P2/P4는 batch B다. 각 쌍 안에서 배치는 동일하다.
+- 관측값은 이미 배경 보정·표본 간 정규화한 log2 intensity다. 추가 변환·반올림·대체·제외는 없다.
+  처리 전후 모두 8 표본·4 pairs·3 markers. 기술 반복은 없고 동일 시점 24시간이다.
+- 쌍별 차이는 입력 문자열을 Decimal로 정확히 뺀 값이다. 이는 반올림이나 데이터 변경이 아니라
+  5.1-5.0 같은 계산에서 이진 부동소수점 오차가 가짜 미세 분산을 만드는 것을 막기 위함이다.
+
+질문 2: 같은 donor의 treated-control 차이와 불확실성
+- 관심 효과는 독립 donor 4명의 쌍별 차이의 평균이다.
+- d_i = treated_i - control_i. 평균 차이의 SE = sd(d_i)/sqrt(4).
+  비퇴화 경우 95% CI = mean(d) ± t(0.975, df=3) × SE.
+- 배치에 공통적인 가산 효과는 같은 배치에서 측정한 두 표본의 차이에서 제거된다.
+  donor 고정효과 모형 y ~ treated + donor와도 수치적으로 일치함을 확인했다.
+  해당 설계행렬 rank는 5/5, 잔차 자유도는 3이다. 여기에 batch를 추가하면 rank 5/6으로,
+  batch는 donor와 겹치므로 별도 계수를 함께 추정하지 않았다.
+- 쌍 차이가 독립이고 정규 분포를 따른다는 t 구간의 가정은 n=4에서 충분히 점검할 수 없다.
+  처리 효과의 배치 의존성 및 미확인 측정 오차는 이 구간으로 별도 정량화하지 않는다.
+- 별도 유의성 검정이나 p값·다중검정 주장은 없다. 각 marker의 구간은 동시 95% 구간이 아니다.
+
+실제 현재 결과 (log2 intensity; 독립 donor pairs n=4, df=3)
+feature   P1/P2/P3/P4 차이        평균차이   쌍간 SD    SE        95% CI
+marker_A  1.0 / 0.9 / 1.1 / 1.1   +1.025    0.095743  0.047871  [0.872652, 1.177348]
+marker_B  0.1 / 0.1 / 0.1 / 0.1   +0.100    0         0         통상적 CI 보고 보류 (퇴화)
+marker_C -0.1/-0.1/-0.1/-0.1       -0.100    0         0         통상적 CI 보고 보류 (퇴화)
+
+퇴화한 불확실성 처리
+- B/C의 쌍 차이는 제공된 소수 정밀도에서 모두 같다. 표본 SD와 SE는 산술적으로 0이다.
+- t 구간 식에 그대로 대입하면 B=[0.1,0.1], C=[-0.1,-0.1]로 붕괴한다. 이를 일반적인
+  95% 신뢰구간이나 실제 불확실성이 0이라는 증거로 제시하지 않는다. contrasts.tsv의
+  ci95_lower/upper는 NA, uncertainty_status는 퇴화 사유이며, 단순 공식의 결과는
+  formal_t_formula_lower/upper에 별도로 보존했다.
+- 임의 오차·jitter를 더하거나 매우 작은 부동소수점 분산으로 극단적 p값을 만들지 않았다.
+  원측정 정밀도·측정 오차·추가 독립 donor 자료 없이는 현실적 모집단 불확실성을 확정할 수 없다.
+
+이전 분석에서 바뀐 점
+- 독립 기증자 n=8(서로 다른 군당 4명) → 4명의 paired donors, 관측 8개.
+- 독립 집단+batch 모형(df=5) → 쌍 차이/동등한 donor 고정효과 모형(df=3).
+- 평균차이 A=1.025, B=0.1, C=-0.1은 그대로지만 불확실성·해석은 재계산했다.
+- A의 SE는 0.060208 → 0.047871, 95% CI는 [0.870230,1.179770] → [0.872652,1.177348].
+- B/C의 이전 SE 0.070711과 0을 포함하던 독립 집단 CI는 대체되었다.
+  현재는 동일한 쌍 차이에서 오는 퇴화를 보고하며 이전의 CI 해석을 재사용하지 않는다.
+
+실행·산출물·검증
+- 작업 위치: /tmp/bio-skill-eval-07
+- 전체 재실행: python analyze.py all > run.log
+  새 Python 프로세스에서 연결 감사와 paired 분석을 모두 실행했고 종료코드는 0이었다.
+- analyze.py는 audit / estimate / all 단계를 지원한다. statsmodels OLS를 이용한 동등 모형
+  검산에서 모든 평균차이와 df가 일치했고, 비퇴화 marker_A의 SE와 CI도 일치했다.
+- 환경: Python 3.12.7, numpy 2.1.3, scipy 1.16.0, statsmodels 0.14.5.
+  기존 패키지만 사용했다. 무작위 연산·seed·추가 설치·외부 입력은 없다.
+- results/audit.json: 입력 checksum·환경·연결·반복 수·결측/제외 기록.
+- results/sample_links.tsv: 현재 sample_id → donor/condition/batch 연결표.
+- results/paired_differences.tsv: 각 donor의 양 조건 값과 차이.
+- results/design_matrix.tsv: 검산용 donor 고정효과 설계행렬.
+- results/contrasts.tsv: 현재 paired 평균차이·SD·SE·CI·퇴화 표시.
+- run.log: 현재 전체 실행의 실제 표준출력. audit_run.log: 정정 후 초기 감사 출력.
+- 작은 표로 충분해 그림은 생성하지 않았다. 미검토 그림은 없다.
+
+해석의 범위와 다음 확인
+- 현재 합성 자료의 A는 네 donor 모두 양의 차이를 보이며 평균 1.025 log2 intensity다.
+  B/C는 작은 동일 방향의 차이가 네 쌍에서 똑같이 나타난다.
+- 이는 합성 예제의 실행 결과다. 생물학적 검증·인과적 처리 효과·기전·절대량 변화의 증거가 아니다.
+  처리 무작위 배정 여부는 제공되지 않았다. 실제 생물학적 주장과 외부 문헌 조회는 하지 않았다.
+- 실제 연구로 옮기려면 donor/배치/배정 원기록, 측정 정밀도와 오차를 먼저 확인해야 한다.
+  특히 B/C의 균일한 차이가 정밀도 제한인지 확인하고 독립 donor 반복을 늘려 분산을 추정해야 한다.
