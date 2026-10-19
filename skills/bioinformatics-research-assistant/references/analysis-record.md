@@ -9,12 +9,25 @@ Prefer one `.ipynb` for a coherent exploratory analysis unless the user's format
 Build each question as a small connected group of cells:
 
 1. **Before execution, Markdown:** What will this check answer, why does it matter, and which verified facts or assumptions does it use? State consequential comparison or preprocessing choices here.
-2. **Code and actual outputs:** Run the minimum necessary computation. Display informative counts, tables, warnings, or figures rather than hiding all evidence in external files. Keep important inputs and parameters easy to find. A question can need several cells; do not impose a fixed cell count.
+2. **Code and actual outputs:** Run the minimum necessary computation. Introduce each output group with its purpose, then show the counts, table, warnings, or figure needed for that question. Keep important inputs and parameters easy to find. A question can need several cells; do not impose a fixed cell count.
 3. **After inspection, Markdown:** Record the observed values, interpretation, limitations, and the next question with its reason. Add this before implementing work whose choices depend on the result. Note when a choice was added after seeing the data. The chat update can be shorter, but must agree with the saved notebook.
 
 For example, an identifier check can be followed by the actual matched, missing, and duplicate counts and a decision about whether sample-level comparisons can proceed. Do not fill these numbers or assume a successful match before executing the check. A short table can be sufficient; a notebook does not require a figure for every question.
 
 Use direct, readable analysis code. Move long or reusable calculations to scripts when useful, while keeping their invocation, consequential parameters, output summaries, and scientific rationale visible in the notebook. Avoid a notebook that merely launches an opaque pipeline. Display the actual generated figure and inspect it with available viewing tools; successful execution or image embedding alone does not establish visual review. Do not duplicate every inline table or plot into a separate artifact unless it needs export or reuse.
+
+## Explain outputs as in a lab meeting
+
+Assume the reader has not seen the data, variable names, or earlier chat. Each output group should make clear **why this check matters, what the displayed quantities mean, what was observed, and how it changes the next step**. A label such as "Shape" or "Values min/max" names an object but does not explain a reason.
+
+- For printed values, start the output block with a short `print("...")` explaining the purpose in the user's language. For tables and figures, an immediately preceding Markdown explanation or caption is sufficient. Introduce a new purpose when a cell switches questions; do not add a separate explanation before every number or repeat the same explanation in Markdown and print.
+- Prefer one compact table for related checks across conditions or samples. Label dimensions as genes, cells, samples, or other actual units instead of leaving an unexplained tuple. Define terms such as nonzero entries only when that quantity informs a decision.
+- Show the input files actually used and their roles when establishing provenance. Do not repeatedly dump every archive member. For identifier alignment, report matched, unmatched, and duplicate counts from the full check; matching a few example barcodes does not establish alignment. Show a small, labeled set of problematic identifiers only when needed to explain a mismatch, with the total affected count.
+- Use a figure when a distribution, relationship, or pattern is easier to assess visually. Use a small table or sentence for exact counts and pass/fail checks. Do not turn every diagnostic into a plot or create extra files just to make the notebook look polished.
+- Keep routine validation in executable checks with useful failure messages and summarize consequential results for the reader. Remove redundant debugging prints after exploration, but retain unresolved problems, important warnings, and evidence that changes the analysis. Do not suppress all warnings or hide failed checks for tidiness.
+- After execution, interpret the actual output and state the next decision. A successful identifier check permits the next inspection; it does not establish data quality or biological validity. Keep observations distinct from expectations and do not write the conclusion before seeing the result.
+
+Before sharing, read the rendered notebook without relying on the chat: can someone explain why each output is present, what its units are, and what follows from it? If not, improve the explanation, summarize the output, or remove a redundant display while preserving the underlying check. See the [output explanation example](collaboration-examples.md#when-turning-diagnostic-output-into-an-explanation) for a compact illustration.
 
 ## Execution, saved outputs, and a clean rerun
 

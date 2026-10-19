@@ -10,6 +10,25 @@ After execution and output inspection: “All 24 columns map to exactly one meta
 
 Avoid writing all downstream code before inspecting results or repeatedly ending with “QC complete. May I continue?”
 
+## When turning diagnostic output into an explanation
+
+Avoid a stream such as `Archive members: [...]`, `shape (4000, 6)`, several barcode previews, and `unique True` without saying which decision those checks support.
+
+For an identifier check, introduce the output with: "I am checking that every expression column maps to exactly one metadata row. Otherwise, a cell could receive the wrong condition or donor label." For printed diagnostics, put that purpose in a `print(...)` before the values; for the summary table below, use it as the preceding Markdown. One introduction is enough for the related checks.
+
+Illustrative summary after checking all identifiers, using condition plus barcode as the key:
+
+| Condition | Matrix cells | Metadata rows | Matched cells | Unmatched IDs | Duplicate IDs |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Control | 6 | 6 | 6 | 0 | 0 |
+| Treated | 6 | 6 | 6 | 0 | 0 |
+
+Unmatched and duplicate counts cover both sources. These are fictional example values, not outputs to insert into an analysis.
+
+After inspecting actual results: "All cells have a unique metadata match, so we can attach condition and donor labels by identifier. This checks linkage only. Next I will establish which observations come from the same donor, because cell counts do not determine the number of independent biological replicates."
+
+If the check instead finds mismatches, report their counts and a few relevant examples and resolve them before attaching labels. Do not reuse the successful interpretation above or replace the compact table with a decorative plot.
+
 ## Ask only for missing information
 
 “I read the six-column matrix with fractional values, but its generating tool and units are not documented. Decimals alone cannot distinguish TPM from estimated counts. I need the quantification tool, output field or file type, and any subsequent normalization. These determine whether a raw-count analysis or a supported estimated-count import route is appropriate. I will preserve the values and continue checking identifiers, missingness, and distributions.”
@@ -39,6 +58,14 @@ Avoid replacing the word “independent” with “paired” while keeping the o
 “The estimated effect is positive, but the interval includes both decreases and increases. These data do not establish an activation mechanism. We can retain the pattern as an exploratory hypothesis and assess it with independent replication or a functional measurement.”
 
 Avoid treating nonsignificance as no effect, calling a borderline p-value almost proven, or selecting only favorable features to construct a mechanistic story.
+
+## When choosing a figure the researcher can read
+
+“I will check the relationship between UMI counts and detected genes with one point per cell, using small transparent points and separate condition panels. I will show all cells under review and mark the proposed filtering threshold. This figure describes cell quality; the independent biological replicates are the donors.”
+
+For a subsequent matched comparison, show donor-level values and connect the same donor across conditions. With few donors, keep their individual observations visible instead of relying on a smooth distribution alone.
+
+Avoid choosing hexbin automatically because there are many cells, replacing it with another unfamiliar chart for novelty, or generating the same collection of plots for every analysis. Follow an explicit researcher request for hexbin, with its bin counts and scales explained. A style preference does not justify changing the filtering criteria, analysis population, or conclusions.
 
 ## When execution is blocked
 
