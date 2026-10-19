@@ -1,0 +1,29 @@
+[
+  {
+    "id": "01",
+    "request": "제공된 marker 자료와 실험 기록을 읽고 treated-control 비교의 분석 설계만 작성해줘. 설계에 필요한 가벼운 점검은 실행해도 되지만 효과 추정과 검정은 아직 하지 마. 실행할 첫 단계와 결과에 따라 계획이 바뀌는 조건을 남겨줘.",
+    "files": {
+      "metadata.tsv": "sample_id\tdonor_id\tcondition\tbatch\nS01\tP1\tcontrol\tA\nS02\tP2\tcontrol\tB\nS03\tP3\tcontrol\tA\nS04\tP4\tcontrol\tB\nS05\tP1\ttreated\tA\nS06\tP2\ttreated\tB\nS07\tP3\ttreated\tA\nS08\tP4\ttreated\tB\n",
+      "measurements.tsv": "feature_id\tS05\tS01\tS07\tS03\tS08\tS02\tS06\tS04\nmarker_A\t8.0\t7.0\t7.9\t6.8\t8.2\t7.2\t8.1\t7.1\nmarker_B\t5.1\t5.0\t4.9\t4.8\t5.2\t5.2\t5.3\t5.1\nmarker_C\t8.9\t9.0\t8.7\t8.8\t9.0\t9.2\t9.1\t9.1\n",
+      "context.md": "Synthetic human cultured-cell marker panel. Rows are fictional markers; columns are sample_id. Values are background-corrected and normalized log2 intensity. Missing values would be NA; zero is a value on the log2 scale. Each donor is split into control and treated aliquots at 24 hours. Donors are independent; observations from the same donor are paired. There are no technical repeats or measurement failures. Batch is constant within each donor. The comparison of interest is treated minus control. No external feature annotation is required. No real biological claims should be made from these synthetic data.\n"
+    }
+  },
+  {
+    "id": "02",
+    "request": "배치 정보를 고려해 처리 효과를 분석할 계획을 세워줘. 자료를 먼저 가볍게 점검하고 가능한 비교와 필요한 정보를 정리해줘. 이번 요청은 설계까지야.",
+    "files": {
+      "metadata.tsv": "sample_id\tdonor_id\tcondition\tbatch\nC1\tD1\tcontrol\tA\nC2\tD2\tcontrol\tA\nC3\tD3\tcontrol\tA\nT1\tD4\ttreated\tB\nT2\tD5\ttreated\tB\nT3\tD6\ttreated\tB\n",
+      "measurements.tsv": "feature_id\tC1\tC2\tC3\tT1\tT2\tT3\nmarker_A\t5.0\t5.2\t4.8\t7.0\t7.2\t6.8\nmarker_B\t8.0\t7.8\t8.2\t8.5\t8.3\t8.7\n",
+      "context.md": "합성 bulk marker 자료. 값은 정규화된 log2 intensity, 행은 가상 marker, 열은 sample ID다. 사람 유래 배양 세포의 독립 donor 6명, 각 한 번 측정. control/treated는 동일 배양 조건에서 24시간 처리를 비교한다. 기술 반복과 결측은 없다.\n"
+    }
+  },
+  {
+    "id": "03",
+    "request": "이 발현 자료를 어떻게 분석할지 설계해줘. 값의 단위와 생성 도구, donor 정보는 아직 전달받지 못했어. 확인 가능한 점검과 지금 결정할 수 없는 것을 구분해줘.",
+    "files": {
+      "expression.tsv": "feature_id\tC1\tC2\tT1\tT2\ngene_A\t10.5\t11.2\t22.8\t21.4\ngene_B\t0\t0.3\t1.7\t1.2\ngene_C\t7.1\t8.0\t6.8\t7.2\n",
+      "metadata.tsv": "sample_id\tcondition\nC1\tcontrol\nC2\tcontrol\nT1\ttreated\nT2\ttreated\n",
+      "context.md": "합성 자료. 행은 feature, 열은 sample ID다. donor 정보는 제공되지 않았다.\n"
+    }
+  }
+]

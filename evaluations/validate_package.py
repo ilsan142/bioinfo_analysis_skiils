@@ -10,20 +10,22 @@ import yaml
 
 def main():
     root = Path(__file__).resolve().parents[1]
-    skill = root / "skills" / "bioinformatics-research-assistant"
-    content = (skill / "SKILL.md").read_text()
-    match = re.match(r"\A---\n(.*?)\n---\n", content, re.S)
-    assert match, "Missing YAML frontmatter"
-    fields = yaml.safe_load(match.group(1))
-    assert set(fields) == {"name", "description"}, "Unexpected shared metadata"
-    assert fields["name"] == skill.name
-    assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", fields["name"])
-    assert 1 <= len(fields["name"]) <= 64
-    assert isinstance(fields["description"], str)
-    assert 1 <= len(fields["description"]) <= 1024
-    print("PASS: name, description, directory and shared metadata")
-
-    skill_documents = list(skill.rglob("*.md"))
+    skills = sorted(path for path in (root / "skills").iterdir() if path.is_dir())
+    assert skills, "No installable skills"
+    skill_documents = []
+    for skill in skills:
+        content = (skill / "SKILL.md").read_text()
+        match = re.match(r"\A---\n(.*?)\n---\n", content, re.S)
+        assert match, f"Missing YAML frontmatter: {skill.name}"
+        fields = yaml.safe_load(match.group(1))
+        assert set(fields) == {"name", "description"}, "Unexpected shared metadata"
+        assert fields["name"] == skill.name
+        assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", fields["name"])
+        assert 1 <= len(fields["name"]) <= 64
+        assert isinstance(fields["description"], str)
+        assert 1 <= len(fields["description"]) <= 1024
+        skill_documents.extend(skill.rglob("*.md"))
+    print(f"PASS: {len(skills)} skills; name, description, directory and shared metadata")
     for path in skill_documents:
         assert not re.search(r"[\u1100-\u11ff\u3130-\u318f\uac00-\ud7a3]", path.read_text()), f"Untranslated Korean in distributed skill: {path}"
     print("PASS: distributed skill documents contain no untranslated Korean text")
@@ -33,6 +35,7 @@ def main():
         report = root / "evaluations" / report_name
         if report.exists():
             documents.append(report)
+    documents.extend(sorted((root / "evaluations" / "planner").glob("*.md")))
     link_count = 0
     for path in documents:
         body = path.read_text()
@@ -55,16 +58,21 @@ def main():
             link_count += 1
     print(f"PASS: {len(documents)} documents, {link_count} local links, fences and whitespace")
 
-    cases = json.loads((root / "evaluations" / "cases.json").read_text())
-    assert [case["id"] for case in cases] == [f"{i:02d}" for i in range(1, 11)]
-    for case in cases:
-        assert isinstance(case["request"], str) and case["request"]
-        assert isinstance(case["files"], dict)
-        for name, value in case["files"].items():
-            assert Path(name).name == name and name not in {".", ".."}
-            assert isinstance(value, str)
-    assert cases[6]["followup"]
-    print("PASS: 10 distinct task inputs; case 07 has a staged correction")
+    for suite, path, count in [
+        ("analysis", root / "evaluations" / "cases.json", 10),
+        ("planner", root / "evaluations" / "planner" / "cases.json", 3),
+    ]:
+        cases = json.loads(path.read_text())
+        assert [case["id"] for case in cases] == [f"{i:02d}" for i in range(1, count + 1)]
+        for case in cases:
+            assert isinstance(case["request"], str) and case["request"]
+            assert isinstance(case["files"], dict)
+            for name, value in case["files"].items():
+                assert Path(name).name == name and name not in {".", ".."}
+                assert isinstance(value, str)
+        if suite == "analysis":
+            assert cases[6]["followup"]
+        print(f"PASS: {suite}: {count} distinct task inputs")
     print("NOT TESTED HERE: agent behavior, statistical validity, product discovery")
 
 

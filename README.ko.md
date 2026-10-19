@@ -4,7 +4,12 @@
 
 **연구자가 분석을 이해하고 검토하면서 함께 진행할 수 있도록 돕는** 재사용 가능한 Agent Skills입니다. Codex와 Claude Code에서 사용할 수 있습니다.
 
-첫 번째 스킬인 [`bioinformatics-research-assistant`](skills/bioinformatics-research-assistant/SKILL.md)는 데이터를 살펴보고, 과학적 판단을 내리고, 관측 결과를 설명하며, 재실행 가능한 분석을 남기는 방식을 정의합니다.
+| 스킬 | 사용할 때 | 주요 산출물 |
+| --- | --- | --- |
+| [`bioinformatics-analysis-planner`](skills/bioinformatics-analysis-planner/SKILL.md) | 데이터와 실험 기록을 바탕으로 질문·비교·방법·우선순위를 설계하거나 기존 설계를 크게 수정할 때 | 확인된 근거, 조건별 선택, 첫 실행 단계가 담긴 분석 설계 |
+| [`bioinformatics-research-assistant`](skills/bioinformatics-research-assistant/SKILL.md) | 데이터를 탐색하고 실제 분석을 실행·검토·해석할 때 | 질문과 실제 출력, 해석, 다음 판단이 연결된 재실행 가능한 분석 |
+
+두 스킬은 각각 독립적으로 사용할 수 있습니다. 별도 설계가 필요하면 planner로 방향을 정하고 research assistant가 실행하며 갱신합니다. 모든 분석에 두 스킬을 의무적으로 적용하지 않습니다.
 
 ## 왜 만들었나요?
 
@@ -33,6 +38,14 @@ RNA-seq, single-cell, spatial, 유전체 변이, 미생물군집, 생물학적 �
 
 배포되는 스킬 지침은 영어입니다. 사용자와의 대화는 사용자의 언어를 따르며, 언어 선호를 알 수 없으면 한국어를 기본으로 합니다. 계획·검토·스킬 제작만 요청받았다면 임의로 연구 분석을 시작하지 않습니다.
 
+## 데이터에서 분석 설계 만들기
+
+`bioinformatics-analysis-planner`는 데이터 의미, 독립적인 실험 단위, 가능한 비교를 확인하는 가벼운 점검부터 시작합니다. 연구 질문과 관심 있는 효과를 정리한 뒤 권장 방법의 근거, 필요한 전제, 어떤 결과에서 방법을 바꾸거나 추론을 보류할지를 설계에 남깁니다. 산출물은 기존 분석 기록의 계획 부분 또는 간결한 `analysis_plan.md`입니다.
+
+설계만 요청받았다면 차등발현·전체 군집화·예측모델 학습까지 진행하지 않습니다. 이미 설계와 실행을 함께 요청했다면 불필요한 재승인 없이 분석을 이어갑니다. 계획은 잠정적이며, 실제 결과를 본 뒤 바꾼 선택과 그 이유를 기록합니다.
+
+모델 성능과 별개로, 이 역할 분리는 연구자의 의도와 분석 판단을 명시적으로 남기기 위한 설계입니다. 스킬을 추가했다고 과학적 정확성이나 모델 성능이 향상됐다고 보장하지는 않습니다. 간단한 분석은 기존 research assistant만으로도 설계와 실행을 함께 진행할 수 있습니다.
+
 ## 노트북으로 분석하기
 
 과학적 질문마다 **질문과 이유 → 코드와 실제 출력 → 관측·해석·한계 → 다음 선택**이 연결되도록 구성합니다. 출력 확인 후 해석을 기록하고, 그 결과에 의존하는 후속 분석을 구현합니다. 중요한 판단은 노트북에도 남겨서 연구자가 대화 기록 없이 분석을 이해할 수 있게 합니다.
@@ -45,7 +58,9 @@ RNA-seq, single-cell, spatial, 유전체 변이, 미생물군집, 생물학적 �
 
 | 파일 | 역할 |
 | --- | --- |
-| [SKILL.md](skills/bioinformatics-research-assistant/SKILL.md) | 핵심 진행 방식, 과학적 판단, 질문 조건, 보고·완료 기준 |
+| [Planner SKILL.md](skills/bioinformatics-analysis-planner/SKILL.md) | 질문·자료·설계 타당성·조건별 선택·실행 범위·인계 기준 |
+| [설계 문서 지침](skills/bioinformatics-analysis-planner/references/analysis-plan.md) | 간결한 설계 형식과 상황별 분기 예시 |
+| [Research assistant SKILL.md](skills/bioinformatics-research-assistant/SKILL.md) | 핵심 진행 방식, 과학적 판단, 질문 조건, 보고·완료 기준 |
 | [scientific-review.md](skills/bioinformatics-research-assistant/references/scientific-review.md) | 상황별 생물학·통계 검토, 데이터 유형별 주의사항, 확인한 출처 |
 | [collaboration-examples.md](skills/bioinformatics-research-assistant/references/collaboration-examples.md) | 설명·질문·정정·한계 전달 예시 |
 | [analysis-record.md](skills/bioinformatics-research-assistant/references/analysis-record.md) | 노트북 진행 방식, 저장된 출력과 새 커널 재실행, 간단한 기록과 최종 보고 |
@@ -53,7 +68,7 @@ RNA-seq, single-cell, spatial, 유전체 변이, 미생물군집, 생물학적 �
 | [평가 보고서](evaluations/REPORT.md) | 실행한 검증, 근거, 수정 이력, 미검증 범위 |
 | [노트북 검증](evaluations/NOTEBOOK_WORKFLOW.md) | 새 에이전트의 노트북 행동 검증, 실행 예시, 새 커널 재실행 근거 |
 
-설치 대상은 `skills/bioinformatics-research-assistant/`뿐입니다. 참조 문서는 필요한 경우에만 읽으며, 평가 입력·채점 기준·과거 실행 기록은 배포 스킬 밖에 둡니다. 필수 분석 스크립트, 패키지 설치, 특정 제품 전용 hooks에 의존하지 않습니다.
+설치 대상은 `skills/` 아래에서 선택한 스킬 폴더입니다. planner 검증 범위는 [별도 기록](evaluations/planner/REPORT.md)에 있습니다. 참조 문서는 필요한 경우에만 읽으며, 평가 입력·채점 기준·과거 실행 기록은 배포 스킬 밖에 둡니다. 필수 분석 스크립트, 패키지 설치, 특정 제품 전용 hooks에 의존하지 않습니다.
 
 ## 설치
 
@@ -64,38 +79,64 @@ git clone https://github.com/ilsan142/bioinfo_analysis_skiils.git
 cd bioinfo_analysis_skiils
 ```
 
-아래 위치 중 하나에 **스킬 폴더 전체**를 복사합니다. 같은 제품의 프로젝트·사용자 경로에 서로 다른 복사본이 생기지 않도록 설치 범위를 하나 선택합니다.
+아래 위치 중 하나에 **선택한 스킬 폴더 전체**를 복사합니다. `<skill-name>`에는 위 표의 실제 스킬 이름을 넣습니다. 같은 제품의 프로젝트·사용자 경로에 서로 다른 복사본이 생기지 않도록 설치 범위를 하나 선택합니다.
 
 | 제품 | 프로젝트 단위 | 사용자 전체 | 명시 호출 |
 | --- | --- | --- | --- |
-| Codex CLI / IDE | `<project>/.agents/skills/bioinformatics-research-assistant/` | `~/.agents/skills/bioinformatics-research-assistant/` | `$bioinformatics-research-assistant` 또는 `/skills`에서 선택 |
-| Claude Code | `<project>/.claude/skills/bioinformatics-research-assistant/` | `~/.claude/skills/bioinformatics-research-assistant/` | `/bioinformatics-research-assistant` |
+| Codex CLI / IDE | `<project>/.agents/skills/<skill-name>/` | `~/.agents/skills/<skill-name>/` | `$<skill-name>` 또는 `/skills`에서 선택 |
+| Claude Code | `<project>/.claude/skills/<skill-name>/` | `~/.claude/skills/<skill-name>/` | `/<skill-name>` |
 
-사용자 전체에 설치하려면 복제한 저장소에서 해당 명령을 실행합니다. 같은 이름의 설치가 이미 있으면 복사를 건너뜁니다. 업데이트할 때는 기존 파일을 먼저 비교합니다.
+사용자 전체에 설치하려면 복제한 저장소에서 해당 명령을 실행합니다. `skill_name`을 설치할 이름으로 설정하며, 두 스킬이 모두 필요하면 이름을 바꾸어 각각 실행합니다. 같은 이름의 설치가 이미 있으면 복사를 건너뜁니다. 업데이트할 때는 기존 파일을 먼저 비교합니다.
 
 Codex:
 
 ```bash
+skill_name=bioinformatics-analysis-planner
 mkdir -p "$HOME/.agents/skills"
-test ! -e "$HOME/.agents/skills/bioinformatics-research-assistant" && \
-  test ! -L "$HOME/.agents/skills/bioinformatics-research-assistant" && \
-  cp -R skills/bioinformatics-research-assistant "$HOME/.agents/skills/"
+test ! -e "$HOME/.agents/skills/$skill_name" && \
+  test ! -L "$HOME/.agents/skills/$skill_name" && \
+  cp -R "skills/$skill_name" "$HOME/.agents/skills/"
 ```
 
 Claude Code:
 
 ```bash
+skill_name=bioinformatics-analysis-planner
 mkdir -p "$HOME/.claude/skills"
-test ! -e "$HOME/.claude/skills/bioinformatics-research-assistant" && \
-  test ! -L "$HOME/.claude/skills/bioinformatics-research-assistant" && \
-  cp -R skills/bioinformatics-research-assistant "$HOME/.claude/skills/"
+test ! -e "$HOME/.claude/skills/$skill_name" && \
+  test ! -L "$HOME/.claude/skills/$skill_name" && \
+  cp -R "skills/$skill_name" "$HOME/.claude/skills/"
 ```
 
 프로젝트 단위 설치는 연구 프로젝트 안의 해당 경로에 복사하면 됩니다. `evaluations/`는 스킬 설치 위치에 복사하지 않습니다. 목록에 나타나지 않으면 스킬 검색 설정을 확인하거나 새 세션을 시작합니다.
 
-설치 위치와 호출법은 2026-10-17에 [Codex 공식 문서](https://learn.chatgpt.com/docs/build-skills)와 [Claude Code 공식 문서](https://code.claude.com/docs/en/skills)를 확인한 내용입니다. 공통 파일은 [Agent Skills 형식](https://agentskills.io/specification)을 따릅니다. 두 제품에서 실제 설치부터 호출까지의 통합 검증은 아직 수행하지 않았습니다.
+설치 위치와 호출법은 2026-10-19에 [Codex 공식 문서](https://learn.chatgpt.com/docs/build-skills)와 [Claude Code 공식 문서](https://code.claude.com/docs/en/skills)를 확인한 내용입니다. 공통 파일은 [Agent Skills 형식](https://agentskills.io/specification)을 따릅니다. 두 제품에서 실제 설치부터 호출까지의 통합 검증은 아직 수행하지 않았습니다.
 
 ## 사용 예시
+
+설계가 필요할 때는 다음처럼 호출합니다. 분석 실행은 별도 요청하거나, 처음부터 설계와 실행을 함께 요청할 수 있습니다.
+
+Codex:
+
+```text
+$bioinformatics-analysis-planner
+이 디렉터리의 데이터와 실험 기록을 확인하고 처리 효과를 분석할 설계만 작성해줘. 필요한 가벼운 점검을 수행하고, 판단이 필요한 사항과 첫 실행 단계를 남겨줘.
+```
+
+Claude Code:
+
+```text
+/bioinformatics-analysis-planner 이 디렉터리의 데이터와 실험 기록을 확인하고 분석 설계를 작성해줘.
+```
+
+설계에 따라 실행할 때:
+
+```text
+$bioinformatics-research-assistant
+analysis_plan.md를 읽고 첫 미완료 단계부터 실행해줘. 각 결과를 확인한 뒤 다음 단계를 선택하고 필요한 설계 변경을 기록해줘.
+```
+
+아래는 별도 계획 문서 없이 바로 분석하는 예시입니다.
 
 Codex:
 
@@ -114,19 +155,22 @@ Claude Code:
 
 ## 검증과 한계
 
-현재 노트북 업데이트는 새 에이전트 두 개에 스킬과 합성 작업 입력만 제공해 검증했습니다. 기대 정답이나 노트북 사용 요청은 전달하지 않았습니다. 둘 다 실행된 노트북을 만들고, 관측을 기록한 뒤 그 결과에 의존하는 분석을 구현했습니다. 정상 사례는 그림을 생성해 실제로 열어 확인했고, 완전 교락 사례는 처리 효과를 분리해 추정할 수 없다고 보고했습니다. 별도의 새 커널 재실행에서도 저장된 출력과 결과표가 재현되었습니다. [검증 기록](evaluations/NOTEBOOK_WORKFLOW.md), [정상 사례 노트북](evaluations/runs/nb-01/analysis.ipynb), [완전 교락 사례 노트북](evaluations/runs/nb-03/treated_control_batch_analysis.ipynb)을 확인할 수 있습니다.
+Planner는 패키지 검사와 합성 자료 3종의 실제 입력 점검, 작성자 설계 예시를 검토했습니다. 독립 에이전트 행동 검증은 아직 하지 않았습니다. [Planner 검증 기록](evaluations/planner/REPORT.md)을 참고하세요. 아래 과거 검증은 research assistant에 해당합니다.
+
+앞선 노트북 업데이트는 새 에이전트 두 개에 스킬과 합성 작업 입력만 제공해 검증했습니다. 기대 정답이나 노트북 사용 요청은 전달하지 않았습니다. 둘 다 실행된 노트북을 만들고, 관측을 기록한 뒤 그 결과에 의존하는 분석을 구현했습니다. 정상 사례는 그림을 생성해 실제로 열어 확인했고, 완전 교락 사례는 처리 효과를 분리해 추정할 수 없다고 보고했습니다. 별도의 새 커널 재실행에서도 저장된 출력과 결과표가 재현되었습니다. [검증 기록](evaluations/NOTEBOOK_WORKFLOW.md), [정상 사례 노트북](evaluations/runs/nb-01/analysis.ipynb), [완전 교락 사례 노트북](evaluations/runs/nb-03/treated_control_batch_analysis.ipynb)을 확인할 수 있습니다.
 
 기존 한국어판은 정상 자료, 소수 발현값, 조건·배치의 완전 혼동, 예측 누수, 표본 관계 정정, 무관한 웹 요청의 6종 사례에서 행동을 실행해 관찰했습니다. 작은 산출물을 통합하도록 지침을 보강한 뒤 정상 사례를 재검증했고, 생성된 분석 코드의 별도 프로세스 재실행도 7회 확인했습니다. 나머지 4종은 시나리오 검토만 수행했습니다.
 
 영어판은 별도로 패키지 검사와 새 에이전트를 통한 정상 자료·조건/배치 완전 혼동의 두 사례 재검증을 통과했습니다. 생성된 두 분석을 새 프로세스에서 다시 실행해 결과표가 동일함도 확인했습니다. 나머지 8사례는 번역 후 재실행하지 않았으며, 자세한 범위는 [영어판 검증 기록](evaluations/ENGLISH_EDITION.md)에 남겼습니다. 과거 입력, 스킬 스냅샷, 실행 기록은 근거를 사후에 바꾸지 않도록 원래 언어와 문구를 보존했습니다. 이들은 별도의 설치용 스킬이 아닙니다.
 
-실제 연구 자료, 제품별 통합 동작, 여러 모델에 걸친 신뢰성은 아직 검증하지 않았습니다. 노트북을 쓰지 않는 예외 상황과 기존 노트북의 설계 정정은 이번에 행동 검증을 새로 수행하지 않았습니다. 합성 그림 한 개를 검토한 것이 시각화 전반의 검증을 뜻하지는 않습니다. 합성 자료에서의 실행 성공은 생물학적 검증이 아닙니다.
+이 저장소에 공개한 평가 근거는 합성 사례입니다. 제품별 통합 동작과 여러 모델에 걸친 신뢰성은 아직 검증하지 않았습니다. 노트북을 쓰지 않는 예외 상황과 기존 노트북의 설계 정정은 이번에 행동 검증을 새로 수행하지 않았습니다. 합성 그림 한 개를 검토한 것이 시각화 전반의 검증을 뜻하지는 않습니다. 합성 자료에서의 실행 성공은 생물학적 검증이 아닙니다.
 
 현재 패키지를 검사하려면 Python 3과 PyYAML이 설치된 환경에서 저장소 루트 기준으로 실행합니다.
 
 ```bash
 python3 evaluations/validate_package.py
 python3 evaluations/prepare_case.py 01 /tmp/bio-skill-case-01-new
+python3 evaluations/prepare_case.py 01 /tmp/bio-planner-case-01-new --suite planner
 ```
 
-두 번째 명령은 Python 표준 라이브러리만 사용해 별도 사례 디렉터리를 준비합니다. 에이전트 행동 평가를 실행하는 명령은 아닙니다. 새 에이전트에 그 디렉터리의 스킬과 작업 입력만 제공하고, 실제 행동을 별도의 기준으로 채점합니다. 07번 정정은 초기 결과 뒤에 전달하며, 10번에는 스킬 적용을 강제하지 않고 metadata만 노출합니다.
+`prepare_case.py` 명령은 Python 표준 라이브러리만 사용해 별도 사례 디렉터리를 준비합니다. 에이전트 행동 평가를 실행하는 명령은 아닙니다. 새 에이전트에 그 디렉터리의 스킬과 작업 입력만 제공하고, 실제 행동을 별도의 기준으로 채점합니다. 07번 정정은 초기 결과 뒤에 전달하며, 10번에는 스킬 적용을 강제하지 않고 metadata만 노출합니다.

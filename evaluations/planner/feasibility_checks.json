@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-19",
+  "execution_kind": "author feasibility probes; not independent agent behavior",
+  "python_version": "3.12.7",
+  "case_sha256": "e216d598779efac5ab6b84ba76ecabbabd3d3ed16d9116ba2ed73adfcd222566",
+  "skill_sha256": {
+    "SKILL.md": "b91b346db3f78f2209c6ad355960d4219f85dbbca2f27b817fb545c4398278ce",
+    "references/analysis-plan.md": "281b3c3234c55bf3c06db7db12273a7bc6f3136a5caab4bb7a435c2a6c662660"
+  },
+  "prepare_case_checks": {
+    "planner_cases_staged": 3,
+    "rubrics_excluded": true,
+    "default_analysis_suite_compatible": true,
+    "existing_destination_preserved": true,
+    "invalid_case_rejected_before_writes": true
+  },
+  "cases": {
+    "01": {
+      "scope": "Complete schema and identifier inspection of synthetic inputs; no outcome estimates or hypothesis tests",
+      "features": 3,
+      "matrix_columns": 8,
+      "metadata_rows": 8,
+      "matched_unique_sample_ids": 8,
+      "matrix_only_sample_ids": [],
+      "metadata_only_sample_ids": [],
+      "duplicate_matrix_sample_ids": [],
+      "duplicate_metadata_sample_ids": [],
+      "observations_by_condition": {
+        "control": 4,
+        "treated": 4
+      },
+      "observations_by_batch_condition": {
+        "A": {
+          "control": 2,
+          "treated": 2
+        },
+        "B": {
+          "control": 2,
+          "treated": 2
+        }
+      },
+      "unique_donor_ids": 4,
+      "donors_observed_in_all_conditions": 4,
+      "input_sha256": {
+        "metadata.tsv": "9a81af3b83e57cc66007c774a475b7d38d25d0773507630f164fece98732f094",
+        "measurements.tsv": "01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93",
+        "context.md": "bf143ce75057fbecc0139a83c9a0888fa2b849d6f910031879b11352699f5436"
+      }
+    },
+    "02": {
+      "scope": "Complete schema and identifier inspection of synthetic inputs; no outcome estimates or hypothesis tests",
+      "features": 2,
+      "matrix_columns": 6,
+      "metadata_rows": 6,
+      "matched_unique_sample_ids": 6,
+      "matrix_only_sample_ids": [],
+      "metadata_only_sample_ids": [],
+      "duplicate_matrix_sample_ids": [],
+      "duplicate_metadata_sample_ids": [],
+      "observations_by_condition": {
+        "control": 3,
+        "treated": 3
+      },
+      "observations_by_batch_condition": {
+        "A": {
+          "control": 3
+        },
+        "B": {
+          "treated": 3
+        }
+      },
+      "unique_donor_ids": 6,
+      "donors_observed_in_all_conditions": 0,
+      "input_sha256": {
+        "metadata.tsv": "a3e6dd70a4f26218d386f7b909505eb22be0da922a1b53a942c1123698a0014f",
+        "measurements.tsv": "939db602f9ef93849ea6c67da488e9883383ec6a5a7644a588fcc7bbc47a3385",
+        "context.md": "540bce3b2ba0f37c8bab222e640e21d98098c70d7a6469ea887dcda58d20f4e4"
+      }
+    },
+    "03": {
+      "scope": "Complete schema and identifier inspection of synthetic inputs; no outcome estimates or hypothesis tests",
+      "features": 3,
+      "matrix_columns": 4,
+      "metadata_rows": 4,
+      "matched_unique_sample_ids": 4,
+      "matrix_only_sample_ids": [],
+      "metadata_only_sample_ids": [],
+      "duplicate_matrix_sample_ids": [],
+      "duplicate_metadata_sample_ids": [],
+      "observations_by_condition": {
+        "control": 2,
+        "treated": 2
+      },
+      "observations_by_batch_condition": {},
+      "unique_donor_ids": null,
+      "donors_observed_in_all_conditions": null,
+      "input_sha256": {
+        "metadata.tsv": "38d9ba555d7a1c8dc547a869ad8db8b3cb791d19d64c027fd142223fb6a14c72",
+        "expression.tsv": "0bee79335f5a666b2b1f6dfe969b00f267958500f12aa654b61bf3108d77204e",
+        "context.md": "2909cd813feafc4f3f074add2e666cf62bcd136199d12d9fc3ae96a36564574c"
+      }
+    }
+  }
+}

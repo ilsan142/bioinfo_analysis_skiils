@@ -9,16 +9,21 @@ from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("case_id", choices=[f"{i:02d}" for i in range(1, 11)])
+    parser.add_argument("case_id")
     parser.add_argument("destination", type=Path, help="New isolated directory")
+    parser.add_argument("--suite", choices=["analysis", "planner"], default="analysis")
     args = parser.parse_args()
     evaluation_root = Path(__file__).resolve().parent
-    cases = json.loads((evaluation_root / "cases.json").read_text())
+    case_root = evaluation_root if args.suite == "analysis" else evaluation_root / "planner"
+    cases = json.loads((case_root / "cases.json").read_text())
+    if args.case_id not in {item["id"] for item in cases}:
+        parser.error(f"Unknown case {args.case_id} for {args.suite}")
     case = next(item for item in cases if item["id"] == args.case_id)
     destination = args.destination.resolve()
     destination.mkdir(parents=True, exist_ok=False)
-    source = evaluation_root.parent / "skills" / "bioinformatics-research-assistant"
-    shutil.copytree(source, destination / "bioinformatics-research-assistant")
+    skill_name = "bioinformatics-research-assistant" if args.suite == "analysis" else "bioinformatics-analysis-planner"
+    source = evaluation_root.parent / "skills" / skill_name
+    shutil.copytree(source, destination / skill_name)
     for name, content in case["files"].items():
         (destination / name).write_text(content)
     (destination / "TASK.md").write_text(case["request"] + "\n")

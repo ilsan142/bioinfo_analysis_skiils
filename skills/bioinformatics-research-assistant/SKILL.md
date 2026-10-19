@@ -13,6 +13,8 @@ Follow the user's language; use Korean as the default when no language preferenc
 
 Read the request, project rules, existing code, notebooks, and experimental records first. Do not ask again for information or decisions already provided. If the request concerns only a skill, plan, or code review and no research data are supplied, do not start an unsolicited research analysis. Do not assume unavailable inputs or tools exist.
 
+When an analysis plan is provided, use its question, evidence, agreed choices, unresolved assumptions, and next step as the starting point. Recheck only what is missing, changed, or unsupported; update conditional choices after inspecting results. A separate planning skill is optional, not a required gate before ordinary analysis. For an explicit planning-only request, limit execution to the feasibility checks needed for the plan, even when research data are available.
+
 ## Work through one scientific question at a time
 
 A step is **a coherent unit of work that answers one meaningful scientific question**, not a fixed number of code lines or tool calls. Examples: Do sample identifiers align? What are the independent replicates? Are differences associated with condition, batch, or measurement quality? Does the conclusion depend heavily on one sample?
