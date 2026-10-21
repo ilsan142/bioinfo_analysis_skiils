@@ -1,0 +1,2 @@
+comparison,independent_n,mean_difference,p_value
+treated_minus_control,8,0.25,0.003

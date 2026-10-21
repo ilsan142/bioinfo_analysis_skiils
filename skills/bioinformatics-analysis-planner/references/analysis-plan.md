@@ -8,6 +8,8 @@ Read when assembling a plan or handing it to an analysis agent. Use one existing
 
 State the biological question, population, independent unit, comparison direction, outcome and units, and the intended kind of conclusion. Separate the primary question from optional exploration. Say whether outcome results have already been seen and whether the current request includes execution beyond feasibility checks.
 
+Explain why resolving the question matters for the present research decision. Use supplied context or checked literature; do not add an unsupported novelty claim. If the goal is exploratory, an honest description of what is not yet understood is sufficient.
+
 ### What is known
 
 | Evidence or issue | Source and inspection scope | Consequence for design |
@@ -52,3 +54,32 @@ Keep a short dated note for material changes: what changed, new evidence, affect
 ## Reader check before delivery
 
 Can a researcher unfamiliar with the files explain why the recommended comparison is supported, what could invalidate it, and what will be checked next? Can the executing agent begin that step without inventing biological facts or silently choosing among unresolved objectives? If not, make the relevant assumption or decision explicit rather than adding more tools to the plan.
+
+## Probe output that explains the decision
+
+Keep purpose and meaning in the reusable probe itself, not only in the final prose. For example, after checking donor relationships and preparing a condition-by-batch count table, the output code might read:
+
+```python
+print("Check whether both conditions occur within batches, so treatment and batch can be distinguished.")
+print("Counts below are independent donors, not cells or measurement rows.")
+print(donors_by_condition_and_batch)
+```
+
+Use the user's language in a real task. This is an illustrative display fragment, not an executed check or a prescribed library. Construct the table from verified units, inspect the actual values, and then explain their consequence. Group one purpose with its coherent summary; do not print a full diagnostic dictionary or repeat a caption for each scalar. Preserve failures and missing information that affect the design, even when routine successful checks are summarized compactly.
+
+## Explain what the plan will let the researcher decide
+
+For a consequential proposed check, connect **current uncertainty -> discriminating evidence -> possible decisions**. Include an ambiguous result when it is plausible. Do not invent numerical thresholds just to fill a decision table.
+
+For example, a plan to compare donor-level expression should say whether the question concerns a consistent within-donor difference or a pooled cell-level pattern. If effects are consistent across donors, report their magnitude and uncertainty at the donor level. If they differ materially, inspect prespecified context or clearly labeled exploratory explanations. If too few informative donors remain, narrow the conclusion and state what additional independent observations are needed. None of these branches guarantees a discovery or proves a mechanism.
+
+State how each optional analysis would resolve a particular ambiguity before adding it. A failed check can justify revising the question, obtaining missing records, or stopping an unsupported claim; it need not trigger a search through more methods. An inconclusive but well-supported answer meets the scientific purpose better than a promised significant result.
+
+For a review meeting, make the requested decision explicit only when the researcher must choose: for example, which biological target to prioritize or which additional experiment would resolve a design limitation. Routine implementation already authorized does not require a new approval step.
+
+Communication sources checked on 2026-10-21:
+
+- [MIT BE Thesis Proposal](https://mitcommlab.mit.edu/be/commkit/be-thesis-proposal/): connect purpose, rationale, feasible approach, completion criteria, and alternatives.
+- [Broad Slideshow](https://mitcommlab.mit.edu/broad/commkit/slideshow/): adapt the explanation to its audience and the feedback sought.
+
+These sources guide explanation, not statistical validation. The planning rules are original operational applications; no proposal text or source figures are reproduced. Do not transfer thesis-specific novelty requirements, document lengths, or persuasive claims to routine exploratory planning.

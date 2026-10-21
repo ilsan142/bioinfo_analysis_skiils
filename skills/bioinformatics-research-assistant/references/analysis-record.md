@@ -29,6 +29,33 @@ Assume the reader has not seen the data, variable names, or earlier chat. Each o
 
 Before sharing, read the rendered notebook without relying on the chat: can someone explain why each output is present, what its units are, and what follows from it? If not, improve the explanation, summarize the output, or remove a redundant display while preserving the underlying check. See the [output explanation example](collaboration-examples.md#when-turning-diagnostic-output-into-an-explanation) for a compact illustration.
 
+## Communication review
+
+Use this review when a notebook has become hard to follow or when preparing a summary for a different audience. Reuse the existing record; a separate communication report is not required.
+
+- **Orient before showing:** State the biological or integrity question and introduce unfamiliar units, axes, transformations, and observation units. Explain the comparison to inspect without predicting what the data will show.
+- **Explain after inspecting:** State the supported observation, cite the relevant output, distinguish interpretation from alternatives, and connect the next check to the unresolved uncertainty. A transition such as "next, clustering" does not explain a decision.
+- **Match the medium:** Keep enough methods and intermediate evidence in the executable notebook for review. A meeting summary can foreground a few important results and link to the full record. Do not apply slide-style brevity to every exploratory cell or hide evidence that weakens a conclusion.
+- **Audit the message:** Does the title say more than the figure or design supports? Could the reader mistake cells for donors, association for causation, or a proposed check for a completed one? Preserve independent n, material uncertainty, exclusions, and interpretation limits where they affect the message.
+- **Read as a newcomer:** Can a researcher explain the question, actual observation, claim boundary, and reason for the next step without the chat? If not, repair the missing explanation or simplify a redundant display. More comments do not repair confusing variable names or an opaque analysis pipeline.
+
+Illustrative wording, not observed results:
+
+> Before execution: To attach treatment and donor information to the right cells, compare the complete cell-identifier sets and check duplicate keys. The summary will distinguish matched cells from unmatched or ambiguous records.
+>
+> After execution: Replace this example with the actual match counts and any problems. If the join is unambiguous, explain that cell metadata can now be connected and identify the next design question. This does not establish independent replication or measurement quality.
+
+Keep finding-based headings conditional on actual observations. Later editorial reordering must not erase which choices were made after seeing results. Contrary findings that change the conclusion belong in the main explanation, even when repetitive implementation details move to linked supporting output.
+
+Communication sources checked on 2026-10-21:
+
+- [MIT BE Results](https://mitcommlab.mit.edu/be/commkit/journal-article-results/): rationale, evidence, and transitions between findings.
+- [Broad Slideshow](https://mitcommlab.mit.edu/broad/commkit/slideshow/): audience, purpose, and orientation before displaying unfamiliar data.
+- [MIT BE Figure Design](https://mitcommlab.mit.edu/be/commkit/figure-design/): correspondence between a message, visual evidence, and its setting.
+- [MIT BE Coding and Comment Style](https://mitcommlab.mit.edu/be/commkit/coding-and-comment-style/): readable names and structure before additional commentary.
+
+These are communication references, not validation of a statistical method. The rules above apply their ideas to evidence-preserving analysis; no source figures or passages are reproduced. Broad's slideshow page credits adaptation from MIT BE, so the two sites are not independent scientific evidence.
+
 ## Execution, saved outputs, and a clean rerun
 
 - Execute during exploration and inspect each relevant result before writing dependent analysis. As the analysis settles, organize cells into a runnable order while preserving the distinction between prespecified choices and later exploration. A final linear notebook need not reproduce every failed attempt, but must retain consequential changes and their reasons.

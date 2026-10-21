@@ -21,6 +21,8 @@ Read project rules, prior plans, notebooks, data dictionaries, experimental reco
 
 State the primary question in plain language: **which population or biological units, what comparison and direction, which outcome or quantity, and what kind of conclusion is sought?** Distinguish description, association, prediction, and causal interpretation. Keep secondary or exploratory questions separate and limited to those relevant to the goal. If only data are provided, propose a small number of supported questions and a reasoned priority; do not silently invent the researcher's intent.
 
+Connect the question to the uncertainty or research decision it would resolve. Use existing context to explain why that matters; do not invent novelty, a literature gap, or a fixed hypothesis for exploratory work. Tailor the explanation to the person reviewing the plan, and identify a requested scientific decision only when one is actually needed.
+
 Inspect only what changes the design. Establish:
 
 - File locations and provenance; what rows, columns, identifiers, values, and units represent; generation and previous processing; relevant species, tissue, treatment, time, reference versions, and annotation.
@@ -30,6 +32,8 @@ Inspect only what changes the design. Establish:
 - Existing methods, software, compute and access constraints that materially affect feasibility. Do not install a large environment or download substantial data for a planning-only task.
 
 Classify evidence as **verified fact with a source, provisional assumption with a reason, or unresolved question with its consequence**. Do not infer raw counts from integers, independent donors from file names, or pairing from row order. Preserve original inputs. Before showing probe output, explain why it matters; use labeled summaries instead of file inventories or identifier dumps. For printed values, print the purpose first. Read actual outputs before choosing dependent checks.
+
+Keep this explanation in the executed probe code when that code is preserved for rerunning; prose added only to the final plan does not explain a bare output on rerun. Show decision-relevant counts or cross-tabulations instead of dumping an entire diagnostic dictionary. The [probe example](references/analysis-plan.md#probe-output-that-explains-the-decision) illustrates the intended level of detail.
 
 ## 2. Decide what the data can support
 
@@ -56,6 +60,8 @@ Organize the roadmap by questions, not code cells or a mandatory sequence such a
 5. How that evidence changes the decision: continue, revise a particular choice, request missing experimental information, or stop the unsupported inference.
 
 Describe **expected output types**, not invented outcomes. Prefer familiar figures that expose the comparison and experimental units; do not propose hexbin unless explicitly requested. A small table is often sufficient for a design check.
+
+For consequential branches, explain what plausible contrasting outcomes would change, including an inconclusive result or a failed assumption. State which explanations the proposed check can distinguish and which it cannot. Choose alternatives because they address a defined obstacle; do not promise a favorable result or treat significance as the only success criterion. The [plan guide](references/analysis-plan.md#explain-what-the-plan-will-let-the-researcher-decide) gives a compact decision-focused example.
 
 Make the first unresolved step executable now: name its input paths, check, and decision criterion, with a small code snippet or existing command if helpful. Leave later choices conditional on results. Do not prewrite a full analysis pipeline. Bound sensitivity checks to specific uncertainties and retain the primary comparison rather than enumerating every possible parameter combination.
 

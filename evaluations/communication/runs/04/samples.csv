@@ -1,0 +1,5 @@
+sample_id,donor,condition,score
+S1,D1,control,1.2
+S2,D1,treated,1.5
+S3,D2,control,2.4
+S4,D2,treated,2.2

@@ -1,0 +1,7 @@
+sample_id	donor_id	condition	batch
+C1	D1	control	A
+C2	D2	control	A
+C3	D3	control	A
+T1	D4	treated	B
+T2	D5	treated	B
+T3	D6	treated	B

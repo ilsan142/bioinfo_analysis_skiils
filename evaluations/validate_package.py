@@ -36,6 +36,8 @@ def main():
         if report.exists():
             documents.append(report)
     documents.extend(sorted((root / "evaluations" / "planner").glob("*.md")))
+    documents.extend(sorted((root / "evaluations" / "communication").rglob("*.md")))
+    documents.extend(sorted((root / "docs").glob("*.md")))
     link_count = 0
     for path in documents:
         body = path.read_text()
@@ -61,6 +63,7 @@ def main():
     for suite, path, count in [
         ("analysis", root / "evaluations" / "cases.json", 10),
         ("planner", root / "evaluations" / "planner" / "cases.json", 3),
+        ("communication", root / "evaluations" / "communication" / "cases.json", 4),
     ]:
         cases = json.loads(path.read_text())
         assert [case["id"] for case in cases] == [f"{i:02d}" for i in range(1, count + 1)]
@@ -70,6 +73,13 @@ def main():
             for name, value in case["files"].items():
                 assert Path(name).name == name and name not in {".", ".."}
                 assert isinstance(value, str)
+            if suite == "communication":
+                assert case["skill"] in {skill.name for skill in skills}
+                for name, relative in case.get("assets", {}).items():
+                    assert Path(name).name == name and name not in {".", ".."}
+                    assert name not in case["files"]
+                    asset = (path.parent / relative).resolve()
+                    assert asset.is_relative_to(path.parent.resolve()) and asset.is_file()
         if suite == "analysis":
             assert cases[6]["followup"]
         print(f"PASS: {suite}: {count} distinct task inputs")

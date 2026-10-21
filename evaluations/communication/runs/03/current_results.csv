@@ -1,0 +1,2 @@
+comparison,independent_n,mean_difference,ci_low,ci_high,p_value
+treated_minus_control,4,0.250000,-1.273480,1.773480,0.637618

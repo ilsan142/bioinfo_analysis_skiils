@@ -8,8 +8,11 @@ Reusable Agent Skills for **doing bioinformatics with a researcher who can under
 | --- | --- | --- |
 | [`bioinformatics-analysis-planner`](skills/bioinformatics-analysis-planner/SKILL.md) | Design questions, comparisons, methods and priorities from available data, or substantially revise a design | A plan with verified evidence, conditional choices and a first executable step |
 | [`bioinformatics-research-assistant`](skills/bioinformatics-research-assistant/SKILL.md) | Explore, execute, review and interpret an analysis | Rerunnable work connecting questions, actual outputs, interpretations and next decisions |
+| [`bioinformatics-lab-meeting-assistant`](skills/bioinformatics-lab-meeting-assistant/SKILL.md) | Prepare a research update or design discussion from existing evidence | Audience-appropriate storyboard, speaker notes, source pointers and feedback decisions |
+| [`scientific-figure-reviewer`](skills/scientific-figure-reviewer/SKILL.md) | Critique scientific figures and captions against the available evidence | Prioritized findings with exact locations, implications and proposed fixes |
+| [`bioinformatics-manuscript-assistant`](skills/bioinformatics-manuscript-assistant/SKILL.md) | Draft or revise requested manuscript sections from actual results and methods | Evidence-linked prose, explicit claim boundaries and missing-method notes |
 
-Each skill works independently. Use the planner when a separate design is useful, then let the research assistant implement and revise it. Both skills are not mandatory for every analysis.
+Each skill works independently. Use the planner when a separate design is useful, then let the research assistant implement and revise it. Request a meeting narrative, figure review or manuscript draft when that deliverable is needed. There is no mandatory five-skill pipeline; communication work does not itself authorize new analysis.
 
 ## Why this exists
 
@@ -23,9 +26,9 @@ The aim is to keep the researcher involved in scientific judgment while letting 
 
 Exploratory notebooks fit this aim: code, output, and the researcher's interpretation can sit together, letting another reader follow why the analysis took its next step. The skill therefore prefers an executed `.ipynb` for exploration. The notebook grows as results are inspected, so it records how observations informed decisions, including choices added after seeing the data.
 
-## How the skill works
+## How the research assistant works
 
-For each meaningful question, the assistant:
+For each meaningful question in an authorized analysis, the research assistant:
 
 1. Explains the question and why it matters.
 2. Separates verified inputs, provisional assumptions, and unknowns.
@@ -54,6 +57,18 @@ Before calling the notebook reproducible, the assistant reruns it in order from 
 
 This is a default for exploration, with room for the researcher's workflow. Existing literate documents, explicitly requested scripts, established pipelines, code reviews, or unavailable notebook runtimes can call for another format. Long or reusable calculations can live in scripts while their important parameters, results, and rationale remain visible in the notebook. A sufficient notebook is also the analysis record; duplicate narrative logs and separate exports of every intermediate result are unnecessary.
 
+## Communicate evidence for research decisions
+
+The analysis skills introduce unfamiliar outputs before showing them, explain actual observations afterward, and connect the next check to a specific uncertainty. The planner explains what contrasting or inconclusive outcomes would change. Findings are written after inspection; a desired story cannot determine the result.
+
+The communication skills work from existing evidence. A lab meeting connects the research question to inspected results and a concrete discussion decision. Figure review separates visible problems, source-data checks and unverified concerns. Manuscript drafting uses corrected current results, matches Methods to the available execution record, and marks missing facts rather than filling them with plausible details.
+
+Exploratory notebooks retain consequential decisions, contrary evidence and post hoc changes. A later presentation may reorder the explanation, but must preserve those facts and link back to the record. Simplification must not hide limitations that would change the reader's conclusion.
+
+These additions are informed by the [MIT BE CommKit](https://mitcommlab.mit.edu/be/use-the-commkit/) and [Broad CommKit](https://mitcommlab.mit.edu/broad/use-the-commkit/). Each relevant reference names the specific pages checked on 2026-10-21. The pages guide communication; they do not validate statistical methods or endorse these skills. Some Broad pages adapt BE material and are not independent scientific evidence. The instructions and examples are newly written; no CommKit figures or passages are reproduced. Source pages identify their content as CC BY-NC 4.0 unless otherwise noted.
+
+See the [expansion roadmap](docs/ROADMAP.md) for researched candidates beyond the five implemented skills. Those candidates are proposals, not installed capabilities.
+
 ## Files
 
 | File | Purpose |
@@ -64,6 +79,9 @@ This is a default for exploration, with room for the researcher's workflow. Exis
 | [scientific-review.md](skills/bioinformatics-research-assistant/references/scientific-review.md) | Conditional scientific and statistical checks, data-type considerations, and checked sources |
 | [collaboration-examples.md](skills/bioinformatics-research-assistant/references/collaboration-examples.md) | Examples of explanations, necessary questions, corrections, and limits |
 | [analysis-record.md](skills/bioinformatics-research-assistant/references/analysis-record.md) | Notebook workflow, saved outputs and clean reruns, lightweight records, and final reports |
+| [Lab meeting skill](skills/bioinformatics-lab-meeting-assistant/SKILL.md) and [example](skills/bioinformatics-lab-meeting-assistant/references/storyboard-example.md) | Evidence selection, speaking notes, timing and decisions for discussion |
+| [Figure review skill](skills/scientific-figure-reviewer/SKILL.md) and [examples](skills/scientific-figure-reviewer/references/review-examples.md) | Visual inspection, source checks and actionable critique |
+| [Manuscript skill](skills/bioinformatics-manuscript-assistant/SKILL.md) and [sources](skills/bioinformatics-manuscript-assistant/references/writing-sources.md) | Requested section drafting, artifact conflicts and scientific claim limits |
 | [Evaluation inputs](evaluations/cases.json) and [rubric](evaluations/rubric.md) | Ten small scenarios; inputs and scoring criteria are kept separate |
 | [Evaluation report](evaluations/REPORT.md) | Executed checks, evidence, revisions, and untested areas |
 | [Notebook validation](evaluations/NOTEBOOK_WORKFLOW.md) | Fresh-agent notebook checks, executed examples, and clean-kernel replay evidence |
@@ -86,7 +104,7 @@ Copy the **entire selected skill directory** to one of the following locations. 
 | Codex CLI / IDE | `<project>/.agents/skills/<skill-name>/` | `~/.agents/skills/<skill-name>/` | `$<skill-name>` or select it with `/skills` |
 | Claude Code | `<project>/.claude/skills/<skill-name>/` | `~/.claude/skills/<skill-name>/` | `/<skill-name>` |
 
-For user-wide installation, run the relevant block from the cloned repository. Set `skill_name` to the skill you want; repeat with the other name if you want both. The copy is skipped if that destination already exists; compare existing files before updating them.
+For user-wide installation, run the relevant block from the cloned repository. Set `skill_name` to the skill you want; repeat for each selected skill. The copy is skipped if that destination already exists; compare existing files before updating them.
 
 Codex:
 
@@ -153,9 +171,26 @@ In Claude Code:
 
 Supply the biological question and available data or records. The assistant should inspect existing information before asking for anything missing. It should continue independent checks when an unresolved question blocks only part of the analysis.
 
+For communication and review, use the requested deliverable as the boundary:
+
+```text
+$bioinformatics-lab-meeting-assistant
+Use analysis.ipynb and its existing outputs to prepare a ten-minute lab meeting for biologists unfamiliar with single-cell analysis. Include speaker notes and a concrete question about the next experiment. Do not run new analyses.
+
+$scientific-figure-reviewer
+Review figure1.png, its caption and donor_summary.csv for a manuscript. Prioritize issues that could change the reader's interpretation. Propose fixes without modifying the source files.
+
+$bioinformatics-manuscript-assistant
+Draft Results and Methods from the corrected result tables and execution record. Keep unresolved methods explicit and distinguish current results from superseded outputs.
+```
+
+In Claude Code, use `/` instead of `$` before the same skill name. No other skill needs to be installed for these requests.
+
 ## Validation and limits
 
-The planner has package checks, executed input probes on three synthetic cases, and author-written plan walkthroughs. It has not received independent agent behavioral validation. See the [planner validation record](evaluations/planner/REPORT.md). The historical evaluations below concern the research assistant.
+The communication update has a separate [validation record](evaluations/communication/REPORT.md), [four runnable task inputs](evaluations/communication/cases.json) (three communication tasks and one review-scope regression), and [scoring criteria](evaluations/communication/rubric.md). Additional task-specific scenarios are specifications until explicitly reported as executed. These records distinguish package checks, blind agent tasks, inspected outputs and untested behavior.
+
+The initial planner release had package checks, executed input probes on three synthetic cases, and author-written plan walkthroughs, but no independent agent behavioral validation; that historical scope remains in the [planner release record](evaluations/planner/REPORT.md). Fresh-agent planner checks and their limits for this update are recorded in the communication validation record above. The historical evaluations below concern the research assistant.
 
 The earlier notebook update was tested with two fresh agents given only the skill and synthetic tasks, without expected answers or a request to use notebooks. Both produced executed notebooks and recorded observations before implementing dependent analysis. The normal case also generated and visually inspected a plot; the confounded case correctly withheld an identifiable treatment-effect claim. Independent clean-kernel reruns reproduced their stored outputs and exported tables. See the [validation record](evaluations/NOTEBOOK_WORKFLOW.md), [normal-case notebook](evaluations/runs/nb-01/analysis.ipynb), and [confounding notebook](evaluations/runs/nb-03/treated_control_batch_analysis.ipynb).
 
@@ -171,6 +206,7 @@ To check the current package from the repository root, use Python 3 with PyYAML 
 python3 evaluations/validate_package.py
 python3 evaluations/prepare_case.py 01 /tmp/bio-skill-case-01-new
 python3 evaluations/prepare_case.py 01 /tmp/bio-planner-case-01-new --suite planner
+python3 evaluations/prepare_case.py 02 /tmp/bio-figure-case-02-new --suite communication
 ```
 
 Each `prepare_case.py` command prepares a fresh, isolated case directory using only the Python standard library. It does not run an agent evaluation. Give a fresh agent only that directory's skill and task inputs, and score its actual behavior separately. Deliver case 07's correction only after its initial result; for case 10, expose only skill metadata without forcing invocation.

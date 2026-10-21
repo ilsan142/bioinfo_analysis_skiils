@@ -1,0 +1,5 @@
+donor,control_mean,treated_mean,cells_per_condition
+D1,10,11,100
+D2,14,13,100
+D3,12,12,100
+D4,16,17,100

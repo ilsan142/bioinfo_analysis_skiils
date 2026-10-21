@@ -1,0 +1,1 @@
+Superseded draft pending review: We analyzed four independent people using an independent-groups t test after rounding the normalized scores. The treatment effect was considered established. The underlying result.txt and figure are unavailable in this packet.

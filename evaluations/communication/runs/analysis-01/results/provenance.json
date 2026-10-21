@@ -1,0 +1,37 @@
+{
+  "timestamp_utc": "2026-10-21T08:03:21.586182+00:00",
+  "inputs_sha256": {
+    "context.md": "0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace",
+    "metadata.tsv": "8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e",
+    "measurements.tsv": "01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93"
+  },
+  "versions": {
+    "python": "3.12.7",
+    "numpy": "2.1.3",
+    "pandas": "2.3.1",
+    "scipy": "1.16.0",
+    "matplotlib": "3.10.8",
+    "nbformat": "5.10.4",
+    "nbclient": "0.10.2"
+  },
+  "contrast": "treated - control",
+  "model": "intercept + treated + batch_B",
+  "before": {
+    "donors": 8,
+    "samples": 8,
+    "features": 3,
+    "values": 24
+  },
+  "after": {
+    "donors": 8,
+    "samples": 8,
+    "features": 3,
+    "values": 24
+  },
+  "excluded_samples": [],
+  "excluded_features": [],
+  "randomness": "none",
+  "pointwise_ci_level": 0.95,
+  "multiple_testing": "no p values; CIs are not simultaneous",
+  "input_contents_unchanged_during_execution": true
+}

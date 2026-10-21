@@ -1,0 +1,1 @@
+SYNTHETIC EXERCISE. The four rows previously treated as four independent people are two donors with paired control and treated samples. Each measurement is already a normalized log2 expression score. previous_report.md was written before this correction; no corrected analysis exists yet.

@@ -1,0 +1,146 @@
+{
+  "01": {
+    "input_and_skill_unchanged": {
+      "study.md": true,
+      "donor_means.csv": true,
+      "TASK.md": true,
+      "bioinformatics-lab-meeting-assistant/SKILL.md": true,
+      "bioinformatics-lab-meeting-assistant/references/storyboard-example.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "5a537d82fa81f7ab784f9708e93e6ec7fe38f39ac0715e46e83a57af8286c5fb",
+      "bioinformatics-lab-meeting-assistant/SKILL.md": "4837fbc7b3fc280a8d6c1ddfdbe23aa4265dde7ac4c3284670e350899582aa1d",
+      "bioinformatics-lab-meeting-assistant/references/storyboard-example.md": "d0acc324b7f51dd014b638f8a82300f5b53cd13e8f9713efd8c1a47514b22320",
+      "donor_means.csv": "c225d2616390b181c68a1b951eea8efaee380dd7f0b15354d2dac0cd6194286d",
+      "meeting.md": "e3e827e7417e32bb2e50d3992432d5d9792ee1b273f85086fa997a04df3feea3",
+      "study.md": "7d1707e1c64c79b1fede0ab0f186da52acb258e5b63fdcf66611d8e2e09f22fd"
+    }
+  },
+  "02": {
+    "input_and_skill_unchanged": {
+      "caption.txt": true,
+      "study.md": true,
+      "donor_means.csv": true,
+      "figure.png": true,
+      "TASK.md": true,
+      "scientific-figure-reviewer/SKILL.md": true,
+      "scientific-figure-reviewer/references/review-examples.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "1e88460a1b2304656fbfcbe25106c049def69710beef4eb5533e968b1146913c",
+      "caption.txt": "de60c20eb676ae6cf632977334e8bc37c0b18f100ec0cfbd788c6cb3ee5026ff",
+      "donor_means.csv": "c225d2616390b181c68a1b951eea8efaee380dd7f0b15354d2dac0cd6194286d",
+      "figure.png": "39707da8661c2c271632d9f7daebcda46c2e1960e2f85f0908a52b16e78ffd93",
+      "review.md": "0a3739019f9c4d7861b65164ac48980686336b95af86f4d5f21552bc98137051",
+      "scientific-figure-reviewer/SKILL.md": "d1bc76dcf530bdf30e7e80b0edafd15274ed656130851ed7e301901e72095e4d",
+      "scientific-figure-reviewer/references/review-examples.md": "26e1fff45b15b19bdc36e0ea0bf44108d225fcaf32bc9fa540520fb68617feb9",
+      "study.md": "211316d3eae6aac0a8af52dbb4fe8e175c15852dcb19547abfde9083ecce3c4d"
+    }
+  },
+  "03": {
+    "input_and_skill_unchanged": {
+      "provenance.md": true,
+      "donor_means.csv": true,
+      "current_results.csv": true,
+      "old_results.csv": true,
+      "analysis_excerpt.py": true,
+      "TASK.md": true,
+      "bioinformatics-manuscript-assistant/SKILL.md": true,
+      "bioinformatics-manuscript-assistant/references/writing-sources.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "e5a1317a271b2b51946b4eba37e0e24280fdc42a877d2288c49a2ff803349d0a",
+      "analysis_excerpt.py": "d2155a26eca4456308b053cd4a064e149f8bc299d704fceebda82db393ada60e",
+      "bioinformatics-manuscript-assistant/SKILL.md": "b89ecc1c3ec81c64f4b10784fb4e012f2d3d0791bc164a6ea81118f05899772f",
+      "bioinformatics-manuscript-assistant/references/writing-sources.md": "b4c559ec7f0a15da360788d54881158c957247a8cd06fb5d72f430f7b9938d0a",
+      "current_results.csv": "4a73e35c0e231b63f608f814269fd3ffa3ac2ac86da5398242848f780fdeee9c",
+      "donor_means.csv": "c225d2616390b181c68a1b951eea8efaee380dd7f0b15354d2dac0cd6194286d",
+      "draft.md": "70dc28f7aed9bd15216e7ed3067ea8a0b9dc733b838495afe296cad00668ab79",
+      "old_results.csv": "82fa829f58a4557bee7869b1aa72c781ac7795e6c1f7d472792c0e133e882060",
+      "provenance.md": "bbf2691cb1b28dd04dd468d7edcd7a09097d021c967833c70f2b542722424f90"
+    }
+  },
+  "04": {
+    "input_unchanged": {
+      "correction.md": true,
+      "samples.csv": true,
+      "analysis.py": true,
+      "previous_report.md": true,
+      "TASK.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "d531ba3bec5b1e50b8c348a80aa48f0e794cbc4a068b11056c4fe64b73f7a0e2",
+      "analysis.py": "a05399a7555d4becf210878203b406795927529425184854b001b07ca9d7b1f7",
+      "bioinformatics-research-assistant/SKILL.md": "6bf6c800d16111e186718f724c01f185b79676089557e22d7729441b9c9db962",
+      "bioinformatics-research-assistant/references/analysis-record.md": "0e2802551a51fddc6609b47eaa0a02c9fb1026f849f829af5a8d9ca13c80b552",
+      "bioinformatics-research-assistant/references/collaboration-examples.md": "0b86696a6bf5aaecfa53c80a68a787f858463e9d7992f25c51c9f561c826dedd",
+      "bioinformatics-research-assistant/references/scientific-review.md": "95caaf597be3af1cda3d1a300e31bd73b53f6d1d7a33749b5ff4c89ea8be2f1b",
+      "correction.md": "897056cf1463c7e402965e87b4873a8c68afd9348e99d30ac8ebd4c77f2443a4",
+      "previous_report.md": "bb9d948a86fb6b2d671364d0e29816caded4724d86d8aa26b4e519e2d10d1a69",
+      "review.md": "54512ceab1ee43dd0eb07e5f7c43e9ac3447cc0f3593e27007a2d49fa404d6ba",
+      "samples.csv": "fd22ffcb56de5c12d8eb241ed35b9c9249c18461f53c687e0e08c4450fde3350"
+    }
+  },
+  "planner-02-v1": {
+    "input_unchanged": {
+      "metadata.tsv": true,
+      "measurements.tsv": true,
+      "context.md": true,
+      "TASK.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "7ac0a21c29814e549bc3c2867e30c70008852be4d840cc32b69a4cfee0293c83",
+      "analysis_plan.md": "31f97e34cd3ca1882db2ddae7128a131afe4f9a8b2b1645d60b20d855e21b96d",
+      "bioinformatics-analysis-planner/SKILL.md": "7a887be8defc2b8018234533837ee6c179fda6b983bd72b1e2dcb0625a343bb9",
+      "bioinformatics-analysis-planner/references/analysis-plan.md": "2da867f34eb41d8508776496d44f5f6e093976bf6be5296aa2c73513e435307d",
+      "context.md": "540bce3b2ba0f37c8bab222e640e21d98098c70d7a6469ea887dcda58d20f4e4",
+      "measurements.tsv": "939db602f9ef93849ea6c67da488e9883383ec6a5a7644a588fcc7bbc47a3385",
+      "metadata.tsv": "a3e6dd70a4f26218d386f7b909505eb22be0da922a1b53a942c1123698a0014f"
+    }
+  },
+  "analysis-01": {
+    "input_unchanged": {
+      "metadata.tsv": true,
+      "measurements.tsv": true,
+      "context.md": true,
+      "TASK.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "bb281f46a06d8bc01b4a4d86fefa71da2651e6b59bb7f3df3491e67eebbec0af",
+      "bioinformatics-research-assistant/SKILL.md": "e0c7006f497eda53d7a8daed0ac18a09ada29889145e59339905e111474d77e0",
+      "bioinformatics-research-assistant/references/analysis-record.md": "0e2802551a51fddc6609b47eaa0a02c9fb1026f849f829af5a8d9ca13c80b552",
+      "bioinformatics-research-assistant/references/collaboration-examples.md": "0b86696a6bf5aaecfa53c80a68a787f858463e9d7992f25c51c9f561c826dedd",
+      "bioinformatics-research-assistant/references/scientific-review.md": "95caaf597be3af1cda3d1a300e31bd73b53f6d1d7a33749b5ff4c89ea8be2f1b",
+      "context.md": "0e3d1de28a15706052a1c16f80ffe9bd7d63da8cd3c28f08af4e053d8ab59ace",
+      "marker_exploration.ipynb": "43cc3c3ff84f973c2bc9a65bbb53ea1803205f77d54f45957f05e9f3999f2d5d",
+      "measurements.tsv": "01ff3f8d1bb8c6018b7d166434e00570ee3c0e202a5d89b69f25fd0cd8518d93",
+      "metadata.tsv": "8f22cab0aebd78567a12f1eca66d75cbfc2a2007ab6e19f2ae69bd21a47d863e",
+      "results/batch_stratified_differences.tsv": "24b4a898d83028633a1d3a1fd2688d1644f06f93caf1bf67ca3cf1c5d4c706e3",
+      "results/execution.json": "b67e0275f26c2f974f882898c745ad8da658b257f00184aa6ed5ffc11e61da9a",
+      "results/leave_one_donor_out.tsv": "b1a8d359c970fc210d2831842540485a57db867075a0f93d1dfb765166ab1a0d",
+      "results/marker_distributions.png": "016cf89fc004cdcbdaf42a18787a37d60179405b9e41cb6f7ecb55306200875a",
+      "results/provenance.json": "b79de8e313aed4d8dcd9ccc5e6057a0d9ec91d26e434ebbab673a7b5ce993076",
+      "results/treated_control_summary.tsv": "a822cdb2ed5c26baa48ceb54dfa6a39f73b464bc21497a91f9948347b017d3ae",
+      "run_analysis.py": "f2af474672929f4ee58c793ebc729585f022f34e3b91728af5200d5a3c780c42"
+    }
+  },
+  "planner-02-v2": {
+    "input_and_skill_unchanged": {
+      "metadata.tsv": true,
+      "measurements.tsv": true,
+      "context.md": true,
+      "TASK.md": true,
+      "bioinformatics-analysis-planner/SKILL.md": true,
+      "bioinformatics-analysis-planner/references/analysis-plan.md": true
+    },
+    "files_sha256": {
+      "TASK.md": "7ac0a21c29814e549bc3c2867e30c70008852be4d840cc32b69a4cfee0293c83",
+      "analysis_plan.md": "d935a37dffba1402b20fac17dc358fd4924e23d927820a3cb4490a3c65bad6a6",
+      "bioinformatics-analysis-planner/SKILL.md": "585b0001cbe551877cd592cc214b905c087d905e132c6305c4be8ca0ced97fef",
+      "bioinformatics-analysis-planner/references/analysis-plan.md": "caf861d884364acbdf58ee26e501475f730130df77b4e5ee21015a9c33c710cf",
+      "context.md": "540bce3b2ba0f37c8bab222e640e21d98098c70d7a6469ea887dcda58d20f4e4",
+      "measurements.tsv": "939db602f9ef93849ea6c67da488e9883383ec6a5a7644a588fcc7bbc47a3385",
+      "metadata.tsv": "a3e6dd70a4f26218d386f7b909505eb22be0da922a1b53a942c1123698a0014f"
+    }
+  }
+}

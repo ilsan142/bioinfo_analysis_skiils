@@ -1,0 +1,7 @@
+{
+  "returncode": 0,
+  "stdout": "재현 정보: 입력을 변경하지 않는 전수 점검이며 Python 표준 라이브러리만 사용합니다.\nPython: 3.12.7\nTASK.md SHA256: 7ac0a21c29814e549bc3c2867e30c70008852be4d840cc32b69a4cfee0293c83\ncontext.md SHA256: 540bce3b2ba0f37c8bab222e640e21d98098c70d7a6469ea887dcda58d20f4e4\nmetadata.tsv SHA256: a3e6dd70a4f26218d386f7b909505eb22be0da922a1b53a942c1123698a0014f\nmeasurements.tsv SHA256: 939db602f9ef93849ea6c67da488e9883383ec6a5a7644a588fcc7bbc47a3385\n\n표본 대응과 반복 관계: 측정 열과 metadata를 연결할 수 있는지, 독립 n이 몇 명인지 확인합니다.\nmetadata 표본: 6 | 측정 표본: 6 | marker: 2\nmetadata 중복 표본: 0 | 측정 중복 표본: 0\n측정에만 있는 표본: 0 | metadata에만 있는 표본: 0\n고유 donor: 6 | 반복 donor ID: 0 | 중복 marker: 0\nmetadata 빈 필드: 0\n\n측정 형식: log2 intensity로 해석할 값이 유한한지 확인하며 재정규화나 모형 적합은 하지 않습니다.\n측정 행 너비 오류: 0\n값 수: 12 | 비유한값: 0 | 0: 0 | 범위: 4.8 – 8.7\n\n처리와 배치를 분리할 수 있는지 확인합니다. 표의 단위는 고유 donor 수입니다.\ncondition\tbatch A\tbatch B\ttotal\ncontrol\t3\t0\t3\ntreated\t0\t3\t3\ntreated 지시열과 batch B 지시열이 동일: True\n동일하면 두 계수를 별도로 추정할 설계 정보가 없습니다. 이 점검은 효과 추정이나 검정이 아닙니다.\n",
+  "stderr": "",
+  "code_sha256": "5eed1ddfceb2d0d5dc71a0bfd4d5d6ba494d55ae83383149eb3f8d30fd454a66",
+  "scope": "Re-execution of saved read-only feasibility probe at its recorded path, not an outcome analysis."
+}

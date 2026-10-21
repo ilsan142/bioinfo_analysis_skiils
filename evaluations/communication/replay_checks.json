@@ -1,0 +1,32 @@
+{
+  "fresh_kernel_replay": {
+    "timestamp_utc": "2026-10-21T08:05:59.072591+00:00",
+    "notebook": "marker_exploration.ipynb",
+    "fresh_kernel": true,
+    "execution_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "executed_code_cells": 10,
+    "error_outputs": 0,
+    "schema_validated": true,
+    "input_files_unchanged": true,
+    "figure_review": "requires separate human or assistant viewing; not certified by this script",
+    "biological_validation": false
+  },
+  "byte_identical_outputs": {
+    "results/treated_control_summary.tsv": true,
+    "results/batch_stratified_differences.tsv": true,
+    "results/leave_one_donor_out.tsv": true,
+    "results/marker_distributions.png": true
+  },
+  "scope": "Execution, preservation and figure consistency; not biological validation."
+}

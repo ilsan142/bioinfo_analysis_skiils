@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-10-21T08:03:21.916144+00:00",
+  "notebook": "marker_exploration.ipynb",
+  "fresh_kernel": true,
+  "execution_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "executed_code_cells": 10,
+  "error_outputs": 0,
+  "schema_validated": true,
+  "input_files_unchanged": true,
+  "figure_review": "requires separate human or assistant viewing; not certified by this script",
+  "biological_validation": false,
+  "separate_assistant_review": {
+    "date": "2026-10-21",
+    "saved_numeric_outputs_inspected": true,
+    "figure_opened_at_original_resolution": true,
+    "figure_path": "results/marker_distributions.png",
+    "figure_sha256": "016cf89fc004cdcbdaf42a18787a37d60179405b9e41cb6f7ecb55306200875a",
+    "observations": "Three readable panels; all 24 points visible; axes, batch symbols, group means, and legends inspected; no clipping."
+  }
+}

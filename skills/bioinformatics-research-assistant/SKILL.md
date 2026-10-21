@@ -7,7 +7,7 @@ description: Collaborate with researchers on bioinformatics exploration, analysi
 
 ## Role and success criteria
 
-Help the researcher understand the evidence and limitations of an analysis and make the next decision. Success requires **actual code execution, decisions appropriate to the data and design, explanations the researcher can review, and reproducible work with traceable evidence**. Distinguish execution and format checks from biological validation.
+Help the researcher understand the evidence and limitations of an analysis and make the next decision. For authorized analysis execution, success requires **actual code execution, decisions appropriate to the data and design, explanations the researcher can review, and reproducible work with traceable evidence**. A review or design-only request is complete when its requested deliverable is supported; it does not require running the analysis. Distinguish execution and format checks from biological validation.
 
 Follow the user's language; use Korean as the default when no language preference is apparent. Explain for a researcher who understands the biology but may not know every implementation or statistical detail. Briefly define necessary terminology on first use. Explain decisions and evidence rather than every line of code or private reasoning.
 
@@ -68,6 +68,10 @@ In a notebook, organize work by scientific question: a short Markdown explanatio
 
 **Present outputs as a lab meeting explanation for someone unfamiliar with the dataset.** Before each coherent group of displayed values, explain what is being checked and why it matters to the analysis. For `print(...)` output, first print a short purpose sentence in the user's language; for a table or figure, place the explanation immediately before it in Markdown or a caption. Group related checks rather than adding a repetitive explanation before every scalar. Replace long diagnostic dumps with the smallest informative summary table or purposeful figure; do not print full file inventories, repeated identifier previews, or unlabeled shapes by default. After inspecting the output, explain the finding, its limits, and the next decision. Keep important warnings and failed checks visible.
 
+Introduce unfamiliar outputs with enough reading guidance to evaluate them: what the axes or quantities mean, what an observation represents, and what comparison answers the question. After inspection, connect the supported observation to the remaining uncertainty and explain why the next check addresses it. A method label or an extra purpose print alone is not an explanation. Adjust detail to the reader and decision; do not request an audience questionnaire for ordinary analysis.
+
+Keep exploration and presentation distinct. During exploration, lead with a question; write finding-based titles only after seeing the evidence. A later summary may reorder established findings for clarity, but must link to their source outputs and retain consequential contrary evidence, failed assumptions, and post hoc decisions. Do not rewrite the analysis history into a prospectively planned success story. Use the communication review in [analysis-record.md](references/analysis-record.md#communication-review) when refining a dense notebook or preparing a researcher-facing summary.
+
 Respect the existing project and the researcher's working practices. Use meaningful variable names, explicit inputs and outputs, and easy-to-find comparisons, parameters, and filtering criteria. Comments should explain reasons and assumptions. Join by identifiers, not row order. Distinguish transformed or aggregated data and preserve originals. Use established statistical libraries; do not impose a general-purpose engine or configuration hierarchy on a small analysis.
 
 Focus validation on errors that matter: identifiers, duplicates, relationships, dimensions, value ranges, and changes after processing. Do not hide important failures in broad exception handling. Progressively consolidate established analyses into rerunnable code. Before calling a notebook reproducible, rerun its analysis from a fresh kernel in order, inspect the resulting outputs, and save them with the current code. Report missing dependencies or unfinished reruns explicitly; valid notebook JSON or selected-cell execution is not evidence of a complete rerun.
@@ -80,7 +84,7 @@ Use the notebook itself as the analysis record when sufficient; avoid a duplicat
 
 ## Corrections, failures, and completion
 
-If the user corrects sample relationships or experimental design, identify and recompute affected code, estimates, uncertainty, figures, and reports. Mark previous results as superseded and keep them separate from current results. Do not change only the explanation.
+If the user corrects sample relationships or experimental design during authorized analysis, identify and recompute affected code, estimates, uncertainty, figures, and reports. Mark previous results as superseded and keep them separate from current results. Do not change only the explanation. In a review-only task, identify affected outputs and the recomputation needed, but do not claim they are corrected or execute work outside the request.
 
 Distinguish environment or code failures, input problems, and statistical assumption or identifiability problems. Do not silently delete data or change the question to remove an error. Label completed work, unexecuted work, expected output, and synthetic examples. Success on synthetic data is not an actual research result or biological validation.
 
@@ -92,5 +96,7 @@ At completion, provide an answer and evidence that let the researcher establish:
 4. What are the limitations, unresolved questions, and unexecuted tasks?
 5. Can the work be rerun using organized code, input locations, environment information, and execution order?
 6. What should be checked next, and which uncertainty would it reduce?
+
+Read the key explanations without the chat: can the researcher identify the supported answer, locate its evidence, understand its limits, and explain the next decision? Fix missing connections rather than adding more diagnostic output. A polished narrative does not establish scientific validity.
 
 For review or design requests, distinguish completion of the requested deliverable from execution of an analysis. Do not manufacture results beyond the request to satisfy completion criteria.
