@@ -8,7 +8,7 @@ Reusable Agent Skills for **doing bioinformatics with a researcher who can under
 | --- | --- | --- |
 | [`bioinformatics-analysis-planner`](skills/bioinformatics-analysis-planner/SKILL.md) | Design questions, comparisons, methods and priorities from available data, or substantially revise a design | A plan with verified evidence, conditional choices and a first executable step |
 | [`bioinformatics-research-assistant`](skills/bioinformatics-research-assistant/SKILL.md) | Explore, execute, review and interpret an analysis | Rerunnable work connecting questions, actual outputs, interpretations and next decisions |
-| [`bioinformatics-lab-meeting-assistant`](skills/bioinformatics-lab-meeting-assistant/SKILL.md) | Prepare a research update or design discussion from existing evidence | Audience-appropriate storyboard, speaker notes, source pointers and feedback decisions |
+| [`bioinformatics-lab-meeting-assistant`](skills/bioinformatics-lab-meeting-assistant/SKILL.md) | Prepare a research update or design discussion, or revise research slides | Evidence-based storyboards, speaker notes, concise headlines and concrete slide revisions |
 | [`scientific-figure-reviewer`](skills/scientific-figure-reviewer/SKILL.md) | Critique scientific figures and captions against the available evidence | Prioritized findings with exact locations, implications and proposed fixes |
 | [`bioinformatics-manuscript-assistant`](skills/bioinformatics-manuscript-assistant/SKILL.md) | Draft or revise requested manuscript sections from actual results and methods | Evidence-linked prose, explicit claim boundaries and missing-method notes |
 
@@ -176,6 +176,9 @@ For communication and review, use the requested deliverable as the boundary:
 ```text
 $bioinformatics-lab-meeting-assistant
 Use analysis.ipynb and its existing outputs to prepare a ten-minute lab meeting for biologists unfamiliar with single-cell analysis. Include speaker notes and a concrete question about the next experiment. Do not run new analyses.
+
+$bioinformatics-lab-meeting-assistant
+Review the supplied slides for a live research presentation. For each slide, return the original title and revised headline, a layout proposal, ready-to-use body text, and specific chart changes. Keep units, independent sample counts, uncertainty and conclusion-changing limitations visible. A written revision plan is sufficient; do not edit the deck or run new analyses.
 
 $scientific-figure-reviewer
 Review figure1.png, its caption and donor_summary.csv for a manuscript. Prioritize issues that could change the reader's interpretation. Propose fixes without modifying the source files.

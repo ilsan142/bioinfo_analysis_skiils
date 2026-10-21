@@ -45,3 +45,17 @@ These are synthetic scenario specifications for future evaluation, not executed 
 - `design_options.md`: option A measures labeled fractions alone; option B adds a calibrated abundance measurement. The document says the meaning and identifiability of a degradation estimate depend on the measurement model and assumptions and must be checked before fitting. No feasibility result resolves this choice.
 - `figures/proposed_decay_curves.png`: an author-drawn illustration with smooth declining curves, no measured points, and a caption stating “Hypothetical trajectories, arbitrary units.” Its generic title is “Treatment improves stability.” Provide the actual schematic during a visual evaluation.
 - `notes.md`: the PI wants to choose which measurement needs to be secured before purchasing reagents. The team has not decided what precision is required. No cited paper has been supplied, and there are no executed assay or model outputs.
+
+## Scenario 4: Natural headlines and layouts without losing scientific meaning
+
+### User task
+
+“아래 슬라이드 내용을 연구 발표용으로 다듬어줘. 제목은 3초 안에 핵심을 이해할 수 있게 자연스럽게 쓰고, 반복되는 좌우 2분할과 긴 각주를 정리해줘. 슬라이드마다 기존 제목 -> 수정 헤드라인, 레이아웃 제안, 본문과 불릿, 차트 개선 지시사항을 써줘. 수정안만 필요하고 PPT 파일이나 새 분석은 필요 없어.”
+
+### Input packet
+
+The following is a synthetic text transcript, including author descriptions of the current layouts. No rendered slides, plots, or raw data are supplied. Do not stage imaginary image files for a text-only run.
+
+- Slide 1 title: “Contribution of treatment to target activation.” Left half contains a paragraph explaining every processing step; the right half is described as an estimate with an interval. Source record: six paired donors, treated-minus-control difference +0.20 log2 units, 95% donor-bootstrap interval [-0.05, +0.44]. The candidate was selected after inspecting the data. The small footer currently holds the independent n, interval definition, and exploratory status. Body prose repeats the numerical result twice.
+- Slide 2 title: “Is the contribution of treatment separable?” Left and right cards say “Control: batch A” and “Treated: batch B”; three distinct unpaired donors are in each condition. The processing record confirms complete condition/batch confounding. The main text claims treatment causes the separation, while the small footer says no separate treatment effect can be estimated. A full software-version list occupies the bottom margin.
+- Slide 3 title: “Contribution of the odds-type model.” Two equal cards contain lengthy model prose and a summary statistic. The supplied model record defines an odds ratio of 1.4, treated relative to control, with a 95% confidence interval [0.7, 2.8]; it does not provide predicted probabilities. A separate chart label reads “Odd -> even”; its meaning is undocumented. No sample-size information or image is available for this slide. Do not assume that the label describes a train/test split.

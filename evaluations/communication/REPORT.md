@@ -43,10 +43,18 @@ All five current installable skills passed the skill-creator `quick_validate.py`
 
 ## Additional scenarios and untested scope
 
-Each new skill has three task specifications with a separate rubric:
+The initial communication release supplied three task specifications per new skill with separate rubrics:
 
 - [Lab meeting scenarios](lab-meeting/scenarios.md) and [rubric](lab-meeting/rubric.md).
 - [Figure review scenarios](figure-review/scenarios.md) and [rubric](figure-review/rubric.md).
 - [Manuscript scenarios](manuscript/scenarios.md) and [rubric](manuscript/rubric.md).
 
 Those nine specifications were reviewed for coverage but were not individually executed. The three completed tests above use the distinct inputs in `cases.json`; they are not passes for all task-specific scenarios. Real notebook-to-deck conversion, live presentation timing, PDF/vector rendering, screenshot-only review, requested figure edits, existing-hexbin retention, literature verification failures, and unresolved artifact conflicts without an explicit supersession record remain untested in fresh agents. No end-to-end Codex/Claude Code discovery test or cross-model reliability study was performed. Existing historical evaluation results do not establish that every old case still passes after this update.
+
+## Later slide-revision refinement
+
+The lab-meeting skill now routes targeted slide edits to [slide revision guidance](../../skills/bioinformatics-lab-meeting-assistant/references/slide-revision.md). It adds natural takeaway headlines, comparison-driven layouts, meaning-preserving label edits, selective removal of footer prose, and a four-field per-slide response. A three-second reading goal is explicitly a design heuristic; important uncertainty, independent sample counts, confounding, and required attribution remain visible. Targeted edits do not require a full talk, new analysis, or deck creation.
+
+A fourth [lab-meeting scenario](lab-meeting/scenarios.md) and separate [scoring criteria](lab-meeting/rubric.md) cover uncertain effects, complete confounding, ambiguous labels, and odds/probability confusion. This is an additional text-only test specification, not an executed or passed behavioral test. The earlier nine specifications and preserved agent runs remain unchanged. Author review checked the new instructions against these failure cases; no new independent agent run, PPTX generation, rendered-slide inspection, audience test, or three-second comprehension measurement was performed for this refinement.
+
+For this refinement, the lab-meeting skill passed `quick_validate.py`; `validate_package.py` passed for five skills, 70 documents, 199 local links, and the unchanged 10/3/4 executable-case input schemas. The fourth lab-meeting scenario is a Markdown specification and is not part of those executable-case counts. Whitespace checks passed. These results establish package consistency only.

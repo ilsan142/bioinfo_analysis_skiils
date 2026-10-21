@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | [`bioinformatics-analysis-planner`](skills/bioinformatics-analysis-planner/SKILL.md) | 데이터와 실험 기록을 바탕으로 질문·비교·방법·우선순위를 설계하거나 기존 설계를 크게 수정할 때 | 확인된 근거, 조건별 선택, 첫 실행 단계가 담긴 분석 설계 |
 | [`bioinformatics-research-assistant`](skills/bioinformatics-research-assistant/SKILL.md) | 데이터를 탐색하고 실제 분석을 실행·검토·해석할 때 | 질문과 실제 출력, 해석, 다음 판단이 연결된 재실행 가능한 분석 |
-| [`bioinformatics-lab-meeting-assistant`](skills/bioinformatics-lab-meeting-assistant/SKILL.md) | 기존 결과나 계획으로 연구 진행 상황과 설계 방향을 논의할 때 | 청중에 맞는 발표 구성, 발표 노트, 근거 위치와 논의할 결정 |
+| [`bioinformatics-lab-meeting-assistant`](skills/bioinformatics-lab-meeting-assistant/SKILL.md) | 연구 진행·설계 발표를 준비하거나 기존 연구 슬라이드를 다듬을 때 | 근거에 맞는 발표 구성·노트, 간결한 헤드라인, 구체적인 슬라이드 수정안 |
 | [`scientific-figure-reviewer`](skills/scientific-figure-reviewer/SKILL.md) | 과학적 그림·캡션이 근거와 실험 설계를 정확히 전달하는지 검토할 때 | 문제 위치, 해석에 미치는 영향, 우선순위와 구체적인 수정안 |
 | [`bioinformatics-manuscript-assistant`](skills/bioinformatics-manuscript-assistant/SKILL.md) | 실제 결과와 방법 기록으로 요청한 논문 부분을 작성·수정할 때 | 근거와 연결된 초안, 해석 범위, 확인이 필요한 방법 정보 |
 
@@ -176,6 +176,9 @@ Claude Code:
 ```text
 $bioinformatics-lab-meeting-assistant
 analysis.ipynb와 기존 출력으로 10분 랩미팅을 준비해줘. 청중은 single-cell 분석에 익숙하지 않은 생물학 연구자야. 발표 노트와 다음 실험에 관해 논의할 질문을 포함하고 새 분석은 하지 마.
+
+$bioinformatics-lab-meeting-assistant
+첨부한 연구 발표 슬라이드를 다듬어줘. 슬라이드마다 기존 제목과 수정 헤드라인, 레이아웃 제안, 바로 쓸 본문, 구체적인 차트 수정사항을 작성해줘. 단위·독립 표본 수·불확실성·결론을 바꾸는 한계는 보이게 유지해줘. 글로 된 수정안이면 충분하고 PPT 파일 수정이나 새 분석은 하지 마.
 
 $scientific-figure-reviewer
 논문용 figure1.png, 캡션, donor_summary.csv를 검토해줘. 해석에 영향을 주는 문제부터 수정안을 제시하되 원본 파일은 바꾸지 마.
